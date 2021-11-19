@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>CommonCore.Base</RootNamespace>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>CommonCore.Base</PackageId>
+        <Authors>Kyle Ratti</Authors>
+        <Company />
+        <Product>CommonCore.Base</Product>
+        <RepositoryUrl>https://github.com/kyleratti/CommonCore</RepositoryUrl>
+        <PackageVersion>1.0.6</PackageVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FSharp.Core" Version="6.0.3" />
+    </ItemGroup>
+
+</Project>
