@@ -1,5 +1,5 @@
-﻿using CommonCore.Base.Extensions;
-using CommonCore.Base.Structures;
+﻿using FruityFoundation.Base.Extensions;
+using FruityFoundation.Base.Structures;
 using NUnit.Framework;
 
 namespace Base.Tests.Extensions;

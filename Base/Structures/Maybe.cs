@@ -1,7 +1,7 @@
 ﻿// Normally we wouldn't want to disable Nullable references, but in this case we want to.
 // We're assuming that if you're following Maybe conventions, you won't be hitting null ref exceptions.
 #pragma warning disable CS8601
-namespace CommonCore.Base.Structures;
+namespace FruityFoundation.Base.Structures;
 
 [Serializable]
 public struct Maybe<T>

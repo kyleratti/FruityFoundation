@@ -1,6 +1,6 @@
 ﻿using Microsoft.FSharp.Core;
 
-namespace CommonCore.Base.Structures;
+namespace FruityFoundation.Base.Structures;
 
 public static class MaybeExtensions
 {

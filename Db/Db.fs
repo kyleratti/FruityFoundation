@@ -1,4 +1,4 @@
-﻿namespace CommonCore.Db
+﻿namespace FruityFoundation.Db
 
 open System
 open System.Data
