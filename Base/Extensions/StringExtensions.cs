@@ -1,4 +1,4 @@
-﻿namespace CommonCore.Base.Extensions;
+﻿namespace FruityFoundation.Base.Extensions;
 
 public static class StringExtensions
 {

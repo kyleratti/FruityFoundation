@@ -1,7 +1,7 @@
-﻿using CommonCore.Base.Structures;
+﻿using FruityFoundation.Base.Structures;
 using Microsoft.FSharp.Core;
 
-namespace CommonCore.Base.Extensions;
+namespace FruityFoundation.Base.Extensions;
 
 public static class FSharpExtensions
 {

@@ -1,6 +1,6 @@
-﻿using CommonCore.Base.Structures;
+﻿using FruityFoundation.Base.Structures;
 
-namespace CommonCore.Base.Extensions;
+namespace FruityFoundation.Base.Extensions;
 
 public static class NullableExtensions
 {
