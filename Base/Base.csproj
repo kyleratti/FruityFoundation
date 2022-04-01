@@ -11,11 +11,7 @@
         <Company />
         <Product>FruityFoundation.Base</Product>
         <RepositoryUrl>https://github.com/kyleratti/FruityFoundation</RepositoryUrl>
-        <PackageVersion>1.0.7</PackageVersion>
+        <PackageVersion>1.1.0</PackageVersion>
     </PropertyGroup>
-
-    <ItemGroup>
-      <PackageReference Include="FSharp.Core" Version="6.0.3" />
-    </ItemGroup>
 
 </Project>
