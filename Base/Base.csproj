@@ -11,7 +11,7 @@
         <Company />
         <Product>FruityFoundation.Base</Product>
         <RepositoryUrl>https://github.com/kyleratti/FruityFoundation</RepositoryUrl>
-        <PackageVersion>1.1.0</PackageVersion>
+        <PackageVersion>1.1.1</PackageVersion>
     </PropertyGroup>
 
 </Project>
