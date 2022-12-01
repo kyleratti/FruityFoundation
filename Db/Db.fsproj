@@ -1,21 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <RootNamespace>FruityFoundation.Db</RootNamespace>
-        <LangVersion>6.0</LangVersion>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageId>FruityFoundation.Db</PackageId>
-        <Authors>Kyle Ratti</Authors>
-        <Company />
-        <Product>FruityFoudnation.Db</Product>
-        <RepositoryUrl>https://github.com/kyleratti/FruityFoundation</RepositoryUrl>
-        <PackageVersion>1.0.5</PackageVersion>
-    </PropertyGroup>
+  <PropertyGroup>
+      <TargetFramework>net6.0</TargetFramework>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+      <RootNamespace>FruityFoundation.Db</RootNamespace>
+      <LangVersion>6.0</LangVersion>
+      <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+      <PackageId>FruityFoundation.Db</PackageId>
+      <Authors>Kyle Ratti</Authors>
+      <Company />
+      <Product>FruityFoudnation.Db</Product>
+      <RepositoryUrl>https://github.com/kyleratti/FruityFoundation</RepositoryUrl>
+      <Version>1.1.2</Version>
+      <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+      <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <Compile Include="Db.fs" />
-    </ItemGroup>
+  <ItemGroup>
+    <None Include="..\LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+      <Compile Include="Db.fs" />
+  </ItemGroup>
 
 </Project>

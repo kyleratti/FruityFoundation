@@ -7,7 +7,14 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageId>FruityFoundation.FsBase</PackageId>
         <Authors>Kyle Ratti</Authors>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <Version>1.1.2</Version>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
     </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
       <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
