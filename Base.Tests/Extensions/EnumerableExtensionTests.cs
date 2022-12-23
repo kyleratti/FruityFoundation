@@ -15,4 +15,31 @@ public class EnumerableExtensionTests
 	[TestCase(new object[] { "hi", "there" }, false, "there", ExpectedResult = new object[] { "hi", "there" })]
 	public object[] TestConditionalWhere(object[] input, bool isConditionValid, object valueToKeep) =>
 		input.ConditionalWhere(isConditionValid, x => x.Equals(valueToKeep)).ToArray();
+
+	[Test]
+	public void TestChooseWithRefType()
+	{
+		var input = new [] { "one", null, "two" };
+
+		var result = input.Choose(x => x).ToArray();
+
+		Assert.That(result.GetType(), Is.EqualTo(typeof(string[])));
+		Assert.That(result.Length, Is.EqualTo(2));
+		Assert.That(result[0], Is.EqualTo("one"));
+		Assert.That(result[1], Is.EqualTo("two"));
+	}
+
+	[Test]
+	public void TestChooseWithValueType()
+	{
+		var input = new int?[] { 1, null, 2 };
+
+		var result = input.Choose(x => x).ToArray();
+
+		Assert.That(result.GetType(), Is.EqualTo(typeof(int[])));
+		Assert.That(result.GetType(), Is.Not.EqualTo(typeof(int?[])));
+		Assert.That(result.Length, Is.EqualTo(2));
+		Assert.That(result[0], Is.EqualTo(1));
+		Assert.That(result[1], Is.EqualTo(2));
+	}
 }

@@ -12,9 +12,17 @@ public static class EnumerableExtensions
 	public static IEnumerable<T> ConditionalWhere<T>(this IEnumerable<T> enumerable, bool isConditionValid, Func<T, bool> pred) =>
 		!isConditionValid ? enumerable : enumerable.Where(pred);
 
-	public static IEnumerable<TOutput> Choose<TInput, TOutput>(this IEnumerable<TInput> enumerable, Func<TInput, TOutput?> mapper) =>
+	public static IEnumerable<TOutput> Choose<TInput, TOutput>(this IEnumerable<TInput> enumerable, Func<TInput, TOutput?> mapper)
+		where TInput : class? =>
 		enumerable
 			.Select(mapper)
 			.Where(x => x is not null)
 			.Cast<TOutput>();
+
+	public static IEnumerable<TOutput> Choose<TInput, TOutput>(this IEnumerable<TInput> enumerable, Func<TInput, TOutput?> mapper)
+		where TOutput : struct =>
+		enumerable
+			.Select(mapper)
+			.Where(x => x.HasValue)
+			.Select(x => x!.Value);
 }
