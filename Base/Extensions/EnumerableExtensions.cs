@@ -13,7 +13,7 @@ public static class EnumerableExtensions
 		!isConditionValid ? enumerable : enumerable.Where(pred);
 
 	public static IEnumerable<TOutput> Choose<TInput, TOutput>(this IEnumerable<TInput> enumerable, Func<TInput, TOutput?> mapper)
-		where TInput : class? =>
+		where TOutput : class? =>
 		enumerable
 			.Select(mapper)
 			.Where(x => x is not null)
