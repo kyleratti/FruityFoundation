@@ -8,7 +8,7 @@
         <PackageId>FruityFoundation.FsBase</PackageId>
         <Authors>Kyle Ratti</Authors>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <Version>1.2.1</Version>
+        <Version>1.2.2</Version>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
     </PropertyGroup>
 

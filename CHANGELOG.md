@@ -1,4 +1,11 @@
 Changelog
+<a name="1.2.2"></a>
+## [1.2.2](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.2.2) (2022-12-23)
+
+### 🐛 Bug Fixes
+
+* handle IEnumerable.Choose<TRefType> correctly (part 2) ([a0a8efb](https://www.github.com/kyleratti/FruityFoundation/commit/a0a8efb854d59d978d677d7a427e51392c9eb8e2))
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.2.1) (2022-12-23)
 
