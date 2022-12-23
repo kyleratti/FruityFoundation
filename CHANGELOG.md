@@ -1,4 +1,11 @@
 Changelog
+<a name="1.2.1"></a>
+## [1.2.1](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.2.1) (2022-12-23)
+
+### 🐛 Bug Fixes
+
+* handle IEnumerable.Choose<Nullable<TStruct>> correctly ([c17d3f1](https://www.github.com/kyleratti/FruityFoundation/commit/c17d3f10d47cc5ce4332b0a96155c5e9814a1a68))
+
 <a name="1.2.0"></a>
 ## [1.2.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.2.0) (2022-12-23)
 
