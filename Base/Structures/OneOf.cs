@@ -1,4 +1,6 @@
-﻿namespace FruityFoundation.Base.Structures;
+﻿using System;
+
+namespace FruityFoundation.Base.Structures;
 
 public class OneOf<T1, T2>
 {

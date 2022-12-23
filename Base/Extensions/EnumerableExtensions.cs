@@ -1,4 +1,8 @@
-﻿namespace FruityFoundation.Base.Extensions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace FruityFoundation.Base.Extensions;
 
 public static class EnumerableExtensions
 {

@@ -1,4 +1,7 @@
-﻿namespace FruityFoundation.Base.Structures;
+﻿using System;
+using System.Collections.Generic;
+
+namespace FruityFoundation.Base.Structures;
 
 public static class MaybeExtensions
 {
