@@ -1,4 +1,12 @@
 Changelog
+<a name="1.2.0"></a>
+## [1.2.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.2.0) (2022-12-23)
+
+### ✨ Features
+
+* add IEnumerable<T>.Choose for Maybe ([dafaae0](https://www.github.com/kyleratti/FruityFoundation/commit/dafaae0fabe1fc8c02e26a8b7a0c650ff261f807))
+* add IEnumerable<T>.Choose() ([a045c76](https://www.github.com/kyleratti/FruityFoundation/commit/a045c76140d8e0b369ec6edc18548226e61a38af))
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.1.2) (2022-12-1)
 
