@@ -1,4 +1,7 @@
 Changelog
+<a name="1.2.3"></a>
+## [1.2.3](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.2.3) (2023-8-2)
+
 <a name="1.2.2"></a>
 ## [1.2.2](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.2.2) (2022-12-23)
 
