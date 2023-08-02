@@ -10,7 +10,7 @@ public static class MaybeExtensions
 	{
 		using var enumerator = collection.GetEnumerator();
 		
-		return !enumerator.MoveNext() ? Maybe<T>.Empty() : enumerator.Current;
+		return !enumerator.MoveNext() ? Maybe.Empty<T>() : enumerator.Current;
 	}
 
 	public static Maybe<T> FirstOrEmpty<T>(this IEnumerable<T> collection, Func<T, bool> pred)
@@ -19,8 +19,11 @@ public static class MaybeExtensions
 			if (pred(item))
 				return item;
 		
-		return Maybe<T>.Empty();
+		return Maybe.Empty<T>();
 	}
+
+	public static Maybe<TValue> TryGet<TKey, TValue>(this IReadOnlyDictionary<TKey, TValue> dict, TKey key) =>
+		dict.TryGetValue(key, out var value) ? Maybe.Just(value) : Maybe.Empty<TValue>();
 
 	public static T? ToNullable<T>(this Maybe<T> item) where T : struct =>
 		item.HasValue ? item.Value : null;

@@ -2,19 +2,26 @@ name: ci
 
 on: [push]
 
+# Allow one run of this workflow per branch and cancel existing runs if triggered again
+concurrency:
+  group: fruityfoundation-ci-${{ github.ref_name }}
+  cancel-in-progress: true
+
 jobs:
   build:
 
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dotnet-version: ['6.0.x']
+        dotnet-version: ['7.0.x', '6.0.x']
 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: "6.0.x"
+          dotnet-version: |
+            6.0.x
+            7.0.x
       - name: Install dependencies
         run: dotnet restore
       - name: Build

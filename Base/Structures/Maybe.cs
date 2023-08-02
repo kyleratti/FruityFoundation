@@ -1,18 +1,20 @@
-﻿// Normally we wouldn't want to disable Nullable references, but in this case we want to.
-// We're assuming that if you're following Maybe conventions, you won't be hitting null ref exceptions.
+namespace FruityFoundation.Base.Structures;
 
 using System;
 
-#pragma warning disable CS8601
-namespace FruityFoundation.Base.Structures;
+public static class Maybe
+{
+	public static Maybe<T> Just<T>(T value) => new(value, hasValue: true);
+	public static Maybe<T> Just<T>(T value, Func<T, bool> hasValue) => new(value, hasValue: hasValue(value));
+	public static Maybe<T> Empty<T>() => new(val: default!, hasValue: false);
+}
 
-[Serializable]
-public struct Maybe<T>
+public readonly struct Maybe<T>
 {
 	private readonly T _value;
 	public readonly bool HasValue;
 
-	private Maybe(T val = default!, bool hasValue = true)
+	internal Maybe(T val = default!, bool hasValue = true)
 	{
 		_value = val;
 		HasValue = hasValue;
@@ -29,12 +31,13 @@ public struct Maybe<T>
 		}
 	}
 
-	public T OrValue(T orVal) =>
-		HasValue ? Value : orVal;
+	public T OrValue(T orVal) => HasValue ? Value : orVal;
+
+	public T OrEval(Func<T> valueFactory) => HasValue ? Value : valueFactory();
 
 	public bool Try(out T val)
 	{
-		val = HasValue ? Value : default;
+		val = HasValue ? Value : default!;
 
 		return HasValue;
 	}
@@ -42,23 +45,34 @@ public struct Maybe<T>
 	public T OrThrow(string msg) =>
 		HasValue ? Value : throw new Exception(msg);
 
+	public T OrThrow(Func<string> messageFactory) =>
+		HasValue ? Value : throw new Exception(messageFactory());
+
+	public T OrThrow(Func<Exception> exFactory) =>
+		HasValue ? Value : throw exFactory();
+
 	public Maybe<TOutput> Map<TOutput>(Func<T, TOutput> transformer) =>
-		HasValue
-			? Maybe<TOutput>.Create(transformer(Value))
-			: Maybe<TOutput>.Empty();
+		HasValue ? Maybe.Just(transformer(Value)) : Maybe.Empty<TOutput>();
 
-	public object ToDbValue() =>
-		HasValue && Value is not null
-			? Value
-			: DBNull.Value;
+	public Maybe<TOutput> Bind<TOutput>(Func<T, TOutput> binder) =>
+		HasValue ? binder(Value) : Maybe.Empty<TOutput>();
 
-	public static Maybe<T> Create(T val, bool hasValue = true) => new(val, hasValue);
+	public Maybe<TOutput> Cast<TOutput>()
+	{
+		if (!HasValue)
+			return Maybe.Empty<TOutput>();
 
-	public static Maybe<T> Create(T val, Func<T, bool> hasValue) => new(val, hasValue(val));
+		try
+		{
+			return (TOutput)Convert.ChangeType(Value, typeof(TOutput))!;
+		}
+		catch (InvalidCastException)
+		{
+			return Maybe.Empty<TOutput>();
+		}
+	}
 
-	public static Maybe<T> Empty() => new(default!, hasValue: false);
-
-	public static implicit operator Maybe<T>(T val) => Create(val);
+	public static implicit operator Maybe<T>(T val) => Maybe.Just(val);
 
 	public static explicit operator T(Maybe<T> val) => val.Value;
 

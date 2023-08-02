@@ -3,7 +3,7 @@ open FruityFoundation.Base.Structures
 
 module Option =
     let toMaybe : 'a option -> Maybe<'a> = function
-        | Some x -> x |> Maybe.Create
+        | Some x -> x |> Maybe.Just
         | None -> Maybe.Empty ()
 
     let fromMaybe : Maybe<'a> -> 'a option = function

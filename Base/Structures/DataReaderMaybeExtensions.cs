@@ -1,8 +1,7 @@
-﻿using System;
+using System;
 using System.Data;
-using FruityFoundation.Base.Structures;
 
-namespace FruityFoundation.Base.Extensions;
+namespace FruityFoundation.Base.Structures;
 
 public static class DataReaderExtensions
 {
@@ -42,6 +41,6 @@ public static class DataReaderExtensions
 	public static Maybe<string> TryGetString(this IDataReader reader, int ord) =>
 		TryGet(reader, ord, reader.GetString);
 
-	private static Maybe<T> TryGet<T>(IDataReader reader, int ord, Func<int, T> valueGetter) =>
-		reader.IsDBNull(ord) ? Maybe<T>.Empty() : valueGetter(ord);
+	private static Maybe<T> TryGet<T>(IDataRecord reader, int ord, Func<int, T> valueGetter) =>
+		reader.IsDBNull(ord) ? Maybe.Empty<T>() : valueGetter(ord);
 }
