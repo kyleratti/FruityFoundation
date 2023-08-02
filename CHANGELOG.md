@@ -1,4 +1,11 @@
 Changelog
+<a name="1.3.0"></a>
+## [1.3.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.3.0) (2023-8-2)
+
+### ✨ Features
+
+* add Result.FailureVal and Result.SuccessVal ([35cc366](https://www.github.com/kyleratti/FruityFoundation/commit/35cc366856d20d77f9f1feaf56fa1bfde6dd6d27))
+
 <a name="1.2.3"></a>
 ## [1.2.3](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.2.3) (2023-8-2)
 
