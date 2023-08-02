@@ -22,6 +22,10 @@ public readonly struct Result<TSuccess, TFailure>
 	public bool IsSuccess => _successVal.HasValue;
 	public bool IsFailure => _failureVal.HasValue;
 
+	public TSuccess SuccessVal => _successVal.Value;
+
+	public TFailure FailureVal => _failureVal.Value;
+
 	public bool TrySuccess(out TSuccess output)
 	{
 		if (!_successVal.Try(out output))
