@@ -1,4 +1,11 @@
 Changelog
+<a name="1.3.1"></a>
+## [1.3.1](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.3.1) (2023-8-3)
+
+### 🐛 Bug Fixes
+
+* remove duplicate Choose extension ([5a2bd69](https://www.github.com/kyleratti/FruityFoundation/commit/5a2bd690f76749df09262a251dd967bd22905158))
+
 <a name="1.3.0"></a>
 ## [1.3.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.3.0) (2023-8-2)
 
