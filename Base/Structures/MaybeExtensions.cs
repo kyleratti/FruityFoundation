@@ -22,6 +22,9 @@ public static class MaybeExtensions
 		return Maybe.Empty<T>();
 	}
 
+	public static Maybe<TValue> TryGet<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key) =>
+		dict.TryGetValue(key, out var value) ? Maybe.Just(value) : Maybe.Empty<TValue>();
+
 	public static Maybe<TValue> TryGet<TKey, TValue>(this IReadOnlyDictionary<TKey, TValue> dict, TKey key) =>
 		dict.TryGetValue(key, out var value) ? Maybe.Just(value) : Maybe.Empty<TValue>();
 
