@@ -12,7 +12,7 @@
       <Company />
       <Product>FruityFoundation.Base</Product>
       <RepositoryUrl>https://github.com/kyleratti/FruityFoundation</RepositoryUrl>
-      <Version>1.3.1</Version>
+      <Version>1.4.0</Version>
       <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
       <PackageLicenseFile>LICENSE</PackageLicenseFile>
       <AssemblyName>FruityFoundation.Base</AssemblyName>

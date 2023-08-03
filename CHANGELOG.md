@@ -1,4 +1,11 @@
 Changelog
+<a name="1.4.0"></a>
+## [1.4.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.4.0) (2023-8-3)
+
+### ✨ Features
+
+* add IDictionary.TryGet to return Maybe<T> ([1b15162](https://www.github.com/kyleratti/FruityFoundation/commit/1b15162ba50a390c67872aa0ee56cbf461754c35))
+
 <a name="1.3.1"></a>
 ## [1.3.1](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.3.1) (2023-8-3)
 
