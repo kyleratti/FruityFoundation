@@ -1,4 +1,11 @@
 Changelog
+<a name="1.5.0"></a>
+## [1.5.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.5.0) (2023-9-4)
+
+### ✨ Features
+
+* Array.toReadOnlyCollection ([1c200a9](https://www.github.com/kyleratti/FruityFoundation/commit/1c200a9fcab73f634711ca98b4578ad11205b570))
+
 <a name="1.4.0"></a>
 ## [1.4.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.4.0) (2023-8-3)
 
