@@ -1,5 +1,9 @@
 ﻿namespace FruityFoundation.FsBase
+open System.Collections.Generic
 open FruityFoundation.Base.Structures
+
+module Array =
+    let toReadOnlyCollection (a : 'a array) = a :> 'a IReadOnlyCollection
 
 module Option =
     let toMaybe : 'a option -> Maybe<'a> = function
