@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <RootNamespace>FruityFoundation.FsBase</RootNamespace>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -10,6 +9,8 @@
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <Version>1.5.0</Version>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
+        <LangVersion>8.0</LangVersion>
     </PropertyGroup>
 
   <ItemGroup>
