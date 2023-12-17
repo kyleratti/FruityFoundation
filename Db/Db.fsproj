@@ -10,7 +10,7 @@
       <Company />
       <Product>FruityFoudnation.Db</Product>
       <RepositoryUrl>https://github.com/kyleratti/FruityFoundation</RepositoryUrl>
-      <Version>1.5.0</Version>
+      <Version>1.5.1</Version>
       <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
       <PackageLicenseFile>LICENSE</PackageLicenseFile>
       <TargetFrameworks>net6.0;net8.0</TargetFrameworks>

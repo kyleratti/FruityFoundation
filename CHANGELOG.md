@@ -1,4 +1,11 @@
 Changelog
+<a name="1.5.1"></a>
+## [1.5.1](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.5.1) (2023-12-17)
+
+### 🐛 Bug Fixes
+
+* use correct signature on bind ([ef3a54e](https://www.github.com/kyleratti/FruityFoundation/commit/ef3a54eae788c1c6134f210e34060d880ddd1823))
+
 <a name="1.5.0"></a>
 ## [1.5.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.5.0) (2023-9-4)
 
