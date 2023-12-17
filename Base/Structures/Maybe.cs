@@ -54,7 +54,7 @@ public readonly struct Maybe<T>
 	public Maybe<TOutput> Map<TOutput>(Func<T, TOutput> transformer) =>
 		HasValue ? Maybe.Just(transformer(Value)) : Maybe.Empty<TOutput>();
 
-	public Maybe<TOutput> Bind<TOutput>(Func<T, TOutput> binder) =>
+	public Maybe<TOutput> Bind<TOutput>(Func<T, Maybe<TOutput>> binder) =>
 		HasValue ? binder(Value) : Maybe.Empty<TOutput>();
 
 	public Maybe<TOutput> Cast<TOutput>()
