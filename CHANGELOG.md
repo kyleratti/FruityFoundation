@@ -1,4 +1,11 @@
 Changelog
+<a name="1.5.2"></a>
+## [1.5.2](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.5.2) (2023-12-20)
+
+### 🐛 Bug Fixes
+
+* rename IDictionary.TryGet to TryGetValue ([b958542](https://www.github.com/kyleratti/FruityFoundation/commit/b95854253450ee2fe5f9a8df2c78f9e19a4732c8))
+
 <a name="1.5.1"></a>
 ## [1.5.1](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.5.1) (2023-12-17)
 
