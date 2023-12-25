@@ -11,6 +11,9 @@ public static class EnumerableExtensions
 
 	public static IEnumerable<T> ConditionalAppend<T>(this IEnumerable<T> enumerable, bool condition, T second) =>
 		condition ? enumerable.Append(second) : enumerable;
+
+	public static IEnumerable<T> ConditionalAppend<T>(this IEnumerable<T> enumerable, Maybe<T> item) =>
+		item.HasValue ? enumerable.Append(item.Value) : enumerable;
 	
 	public static IEnumerable<T> ConditionalWhere<T>(this IEnumerable<T> enumerable, bool condition, Func<T, bool> pred) =>
 		!condition ? enumerable : enumerable.Where(pred);
