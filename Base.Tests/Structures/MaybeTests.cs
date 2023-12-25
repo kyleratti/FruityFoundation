@@ -42,4 +42,52 @@ public class MaybeTests
 		Assert.That(result, Is.InstanceOf<Maybe<string>>());
 		Assert.That(result.HasValue, Is.True);
 	}
+
+	[Test]
+	public void EmptyBind_DoesNotBindFactory_WhenHasValue()
+	{
+		var maybe = Maybe.Just(25);
+
+		var result = maybe.EmptyBind(() => Maybe.Just(30));
+
+		Assert.That(result, Is.InstanceOf<Maybe<int>>());
+		Assert.That(result.HasValue, Is.True);
+		Assert.That(result.Value, Is.EqualTo(25));
+	}
+
+	[Test]
+	public void EmptyBind_BindsFactory_WhenDoesNotHaveValue()
+	{
+		var maybe = Maybe.Empty<int>();
+
+		var result = maybe.EmptyBind(() => Maybe.Just(30));
+
+		Assert.That(result, Is.InstanceOf<Maybe<int>>());
+		Assert.That(result.HasValue, Is.True);
+		Assert.That(result.Value, Is.EqualTo(30));
+	}
+
+	[Test]
+	public void EmptyBind_DoesNotBindMaybe_WhenHasValue()
+	{
+		var maybe = Maybe.Just(25);
+
+		var result = maybe.EmptyBind(Maybe.Just(30));
+
+		Assert.That(result, Is.InstanceOf<Maybe<int>>());
+		Assert.That(result.HasValue, Is.True);
+		Assert.That(result.Value, Is.EqualTo(25));
+	}
+
+	[Test]
+	public void EmptyBind_BindsMaybe_WhenDoesNotHaveValue()
+	{
+		var maybe = Maybe.Empty<int>();
+
+		var result = maybe.EmptyBind(Maybe.Just(30));
+
+		Assert.That(result, Is.InstanceOf<Maybe<int>>());
+		Assert.That(result.HasValue, Is.True);
+		Assert.That(result.Value, Is.EqualTo(30));
+	}
 }

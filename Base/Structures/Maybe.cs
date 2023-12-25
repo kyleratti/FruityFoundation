@@ -57,6 +57,12 @@ public readonly struct Maybe<T>
 	public Maybe<TOutput> Bind<TOutput>(Func<T, Maybe<TOutput>> binder) =>
 		HasValue ? binder(Value) : Maybe.Empty<TOutput>();
 
+	public Maybe<T> EmptyBind(Func<Maybe<T>> maybeFactory) =>
+		HasValue ? this : maybeFactory();
+
+	public Maybe<T> EmptyBind(Maybe<T> maybe) =>
+		HasValue ? this : maybe;
+
 	public Maybe<TOutput> Cast<TOutput>()
 	{
 		if (!HasValue)
