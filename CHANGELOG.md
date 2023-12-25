@@ -1,4 +1,11 @@
 Changelog
+<a name="1.6.0"></a>
+## [1.6.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.6.0) (2023-12-25)
+
+### ✨ Features
+
+* T?.AsMaybe() for reference types ([572c365](https://www.github.com/kyleratti/FruityFoundation/commit/572c365725eb1b746a30a3447a1e554b418b0372))
+
 <a name="1.5.2"></a>
 ## [1.5.2](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.5.2) (2023-12-20)
 
