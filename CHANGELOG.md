@@ -1,4 +1,11 @@
 Changelog
+<a name="1.7.0"></a>
+## [1.7.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.7.0) (2023-12-25)
+
+### ✨ Features
+
+* IEnumerable<T>.ConditionalAppend(Maybe<T>) ([de8d2f3](https://www.github.com/kyleratti/FruityFoundation/commit/de8d2f393c33a97e89fc461b28deebaaa6ccb3c3))
+
 <a name="1.6.0"></a>
 ## [1.6.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.6.0) (2023-12-25)
 
