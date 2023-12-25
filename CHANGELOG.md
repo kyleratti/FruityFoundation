@@ -1,4 +1,11 @@
 Changelog
+<a name="1.8.0"></a>
+## [1.8.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.8.0) (2023-12-25)
+
+### ✨ Features
+
+* Maybe<T>.EmptyBind ([8e00797](https://www.github.com/kyleratti/FruityFoundation/commit/8e007975f66d83b9d3435149db361ae975ff0f91))
+
 <a name="1.7.0"></a>
 ## [1.7.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.7.0) (2023-12-25)
 
