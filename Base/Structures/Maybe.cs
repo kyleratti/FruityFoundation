@@ -70,7 +70,14 @@ public readonly struct Maybe<T>
 
 		try
 		{
-			return (TOutput)Convert.ChangeType(Value, typeof(TOutput))!;
+			var t = typeof(TOutput);
+			t = Nullable.GetUnderlyingType(t) ?? t;
+
+			var output = Value == null
+				? default
+				: (TOutput)Convert.ChangeType(Value, t);
+
+			return Maybe.Just(output, hasValue: _ => output != null)!;
 		}
 		catch (InvalidCastException)
 		{

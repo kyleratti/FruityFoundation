@@ -90,4 +90,62 @@ public class MaybeTests
 		Assert.That(result.HasValue, Is.True);
 		Assert.That(result.Value, Is.EqualTo(30));
 	}
+
+	[Test]
+	public void Cast_ToNullableReferenceType_ReturnsEmptyMaybe_WhenHasNoValue()
+	{
+		// Arrange
+		var maybe = Maybe.Empty<string>();
+
+		// Act
+		var result = maybe.Cast<string?>();
+
+		// Assert
+		Assert.That(result, Is.InstanceOf<Maybe<string?>>());
+		Assert.That(result.HasValue, Is.False);
+	}
+
+	[Test]
+	public void Cast_ToNullableReferenceType_ReturnsMaybe_WhenHasValue()
+	{
+		// Arrange
+		var maybe = Maybe.Just("banana");
+
+		// Act
+		var result = maybe.Cast<string?>();
+
+		// Assert
+		Assert.That(result, Is.InstanceOf<Maybe<string?>>());
+		Assert.That(result.HasValue, Is.True);
+		Assert.That(result.Value, Is.EqualTo("banana"));
+	}
+
+	[Test]
+	public void Cast_ToNullableValueType_ReturnsEmptyMaybe_WhenHasNoValue()
+	{
+		// Arrange
+		var maybe = Maybe.Empty<int>();
+
+		// Act
+		var result = maybe.Cast<string?>();
+
+		// Assert
+		Assert.That(result, Is.InstanceOf<Maybe<string?>>());
+		Assert.That(result.HasValue, Is.False);
+	}
+
+	[Test]
+	public void Cast_ToNullableValueType_ReturnsMaybe_WhenHasValue()
+	{
+		// Arrange
+		var maybe = Maybe.Just(25);
+
+		// Act
+		var result = maybe.Cast<int?>();
+
+		// Assert
+		Assert.That(result, Is.InstanceOf<Maybe<int?>>());
+		Assert.That(result.HasValue, Is.True);
+		Assert.That(result.Value, Is.EqualTo(25));
+	}
 }
