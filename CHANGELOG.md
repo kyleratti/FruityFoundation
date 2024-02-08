@@ -1,4 +1,11 @@
 Changelog
+<a name="1.8.1"></a>
+## [1.8.1](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.8.1) (2024-2-8)
+
+### 🐛 Bug Fixes
+
+* handle nullable value types in Maybe.Cast ([a56a4ff](https://www.github.com/kyleratti/FruityFoundation/commit/a56a4ff5f2bdb71fcf6d355ba44b59cbe5ffd7f2))
+
 <a name="1.8.0"></a>
 ## [1.8.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.8.0) (2023-12-25)
 
