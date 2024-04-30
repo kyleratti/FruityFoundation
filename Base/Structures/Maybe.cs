@@ -9,12 +9,12 @@ public static class Maybe
 	public static Maybe<T> Empty<T>() => new(val: default!, hasValue: false);
 }
 
-public readonly struct Maybe<T>
+public readonly record struct Maybe<T>
 {
 	private readonly T _value;
 	public readonly bool HasValue;
 
-	internal Maybe(T val = default!, bool hasValue = true)
+	internal Maybe(T val, bool hasValue)
 	{
 		_value = val;
 		HasValue = hasValue;
