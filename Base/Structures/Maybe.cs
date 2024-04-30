@@ -4,8 +4,8 @@ using System;
 
 public static class Maybe
 {
-	public static Maybe<T> Just<T>(T value) => new(value, hasValue: true);
-	public static Maybe<T> Just<T>(T value, Func<T, bool> hasValue) => new(value, hasValue: hasValue(value));
+	public static Maybe<T> Create<T>(T value) => new(value, hasValue: true);
+	public static Maybe<T> Create<T>(T value, Func<T, bool> hasValue) => new(value, hasValue: hasValue(value));
 	public static Maybe<T> Empty<T>() => new(val: default!, hasValue: false);
 }
 
@@ -52,7 +52,7 @@ public readonly record struct Maybe<T>
 		HasValue ? Value : throw exFactory();
 
 	public Maybe<TOutput> Map<TOutput>(Func<T, TOutput> transformer) =>
-		HasValue ? Maybe.Just(transformer(Value)) : Maybe.Empty<TOutput>();
+		HasValue ? Maybe.Create(transformer(Value)) : Maybe.Empty<TOutput>();
 
 	public Maybe<TOutput> Bind<TOutput>(Func<T, Maybe<TOutput>> binder) =>
 		HasValue ? binder(Value) : Maybe.Empty<TOutput>();
@@ -77,7 +77,7 @@ public readonly record struct Maybe<T>
 				? default
 				: (TOutput)Convert.ChangeType(Value, t);
 
-			return Maybe.Just(output, hasValue: _ => output != null)!;
+			return Maybe.Create(output, hasValue: _ => output != null)!;
 		}
 		catch (InvalidCastException)
 		{
@@ -85,7 +85,7 @@ public readonly record struct Maybe<T>
 		}
 	}
 
-	public static implicit operator Maybe<T>(T val) => Maybe.Just(val);
+	public static implicit operator Maybe<T>(T val) => Maybe.Create(val);
 
 	public static explicit operator T(Maybe<T> val) => val.Value;
 

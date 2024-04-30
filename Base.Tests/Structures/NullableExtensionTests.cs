@@ -12,7 +12,7 @@ public class NullableExtensionTests
 	
 	[Test]
 	public void TestNullableStructOfValueToMaybe() =>
-		Assert.AreEqual(Maybe.Just(25), ((int?)25).ToMaybe());
+		Assert.AreEqual(Maybe.Create(25), ((int?)25).ToMaybe());
 
 	[Test]
 	public void TestNullableReferenceOfNullAsMaybe()

@@ -10,7 +10,7 @@ public class MaybeTests
 	{
 		var emptyMaybe = Maybe.Empty<int>();
 
-		var result = emptyMaybe.Bind(x => Maybe.Just(x + 1));
+		var result = emptyMaybe.Bind(x => Maybe.Create(x + 1));
 
 		Assert.That(result, Is.InstanceOf<Maybe<int>>());
 		Assert.That(result.HasValue, Is.False);
@@ -19,9 +19,9 @@ public class MaybeTests
 	[Test]
 	public void TestBind_BindsWhenHasValue()
 	{
-		var emptyMaybe = Maybe.Just<int>(1);
+		var emptyMaybe = Maybe.Create<int>(1);
 
-		var result = emptyMaybe.Bind(x => Maybe.Just(x + 1));
+		var result = emptyMaybe.Bind(x => Maybe.Create(x + 1));
 
 		Assert.That(result, Is.InstanceOf<Maybe<int>>());
 		Assert.That(result.HasValue, Is.True);
@@ -31,11 +31,11 @@ public class MaybeTests
 	[Test]
 	public void TestBind_BindsWhenHasValue_NewOutputType()
 	{
-		var maybe = Maybe.Just(25);
+		var maybe = Maybe.Create(25);
 
 		var result = maybe.Bind(x => x switch
 		{
-			25 => Maybe.Just("twenty-five"),
+			25 => Maybe.Create("twenty-five"),
 			_ => Maybe.Empty<string>()
 		});
 
@@ -46,9 +46,9 @@ public class MaybeTests
 	[Test]
 	public void EmptyBind_DoesNotBindFactory_WhenHasValue()
 	{
-		var maybe = Maybe.Just(25);
+		var maybe = Maybe.Create(25);
 
-		var result = maybe.EmptyBind(() => Maybe.Just(30));
+		var result = maybe.EmptyBind(() => Maybe.Create(30));
 
 		Assert.That(result, Is.InstanceOf<Maybe<int>>());
 		Assert.That(result.HasValue, Is.True);
@@ -60,7 +60,7 @@ public class MaybeTests
 	{
 		var maybe = Maybe.Empty<int>();
 
-		var result = maybe.EmptyBind(() => Maybe.Just(30));
+		var result = maybe.EmptyBind(() => Maybe.Create(30));
 
 		Assert.That(result, Is.InstanceOf<Maybe<int>>());
 		Assert.That(result.HasValue, Is.True);
@@ -70,9 +70,9 @@ public class MaybeTests
 	[Test]
 	public void EmptyBind_DoesNotBindMaybe_WhenHasValue()
 	{
-		var maybe = Maybe.Just(25);
+		var maybe = Maybe.Create(25);
 
-		var result = maybe.EmptyBind(Maybe.Just(30));
+		var result = maybe.EmptyBind(Maybe.Create(30));
 
 		Assert.That(result, Is.InstanceOf<Maybe<int>>());
 		Assert.That(result.HasValue, Is.True);
@@ -84,7 +84,7 @@ public class MaybeTests
 	{
 		var maybe = Maybe.Empty<int>();
 
-		var result = maybe.EmptyBind(Maybe.Just(30));
+		var result = maybe.EmptyBind(Maybe.Create(30));
 
 		Assert.That(result, Is.InstanceOf<Maybe<int>>());
 		Assert.That(result.HasValue, Is.True);
@@ -109,7 +109,7 @@ public class MaybeTests
 	public void Cast_ToNullableReferenceType_ReturnsMaybe_WhenHasValue()
 	{
 		// Arrange
-		var maybe = Maybe.Just("banana");
+		var maybe = Maybe.Create("banana");
 
 		// Act
 		var result = maybe.Cast<string?>();
@@ -138,7 +138,7 @@ public class MaybeTests
 	public void Cast_ToNullableValueType_ReturnsMaybe_WhenHasValue()
 	{
 		// Arrange
-		var maybe = Maybe.Just(25);
+		var maybe = Maybe.Create(25);
 
 		// Act
 		var result = maybe.Cast<int?>();

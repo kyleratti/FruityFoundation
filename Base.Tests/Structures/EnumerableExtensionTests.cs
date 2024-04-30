@@ -27,7 +27,7 @@ public class EnumerableExtensionTests
 		var baseArray = new[] { 0, 1, 2 };
 
 		var result = baseArray
-			.ConditionalAppend(Maybe.Just(3))
+			.ConditionalAppend(Maybe.Create(3))
 			.ToArray();
 
 		Assert.That(result, Has.Length.EqualTo(4));

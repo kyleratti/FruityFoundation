@@ -23,10 +23,10 @@ public static class MaybeExtensions
 	}
 
 	public static Maybe<TValue> TryGetValue<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key) =>
-		dict.TryGetValue(key, out var value) ? Maybe.Just(value) : Maybe.Empty<TValue>();
+		dict.TryGetValue(key, out var value) ? Maybe.Create(value) : Maybe.Empty<TValue>();
 
 	public static Maybe<TValue> TryGet<TKey, TValue>(this IReadOnlyDictionary<TKey, TValue> dict, TKey key) =>
-		dict.TryGetValue(key, out var value) ? Maybe.Just(value) : Maybe.Empty<TValue>();
+		dict.TryGetValue(key, out var value) ? Maybe.Create(value) : Maybe.Empty<TValue>();
 
 	public static T? ToNullable<T>(this Maybe<T> item) where T : struct =>
 		item.HasValue ? item.Value : null;

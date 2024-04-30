@@ -7,7 +7,7 @@ module Array =
 
 module Option =
     let toMaybe : 'a option -> Maybe<'a> = function
-        | Some x -> x |> Maybe.Just
+        | Some x -> x |> Maybe.Create
         | None -> Maybe.Empty ()
 
     let fromMaybe : Maybe<'a> -> 'a option = function
