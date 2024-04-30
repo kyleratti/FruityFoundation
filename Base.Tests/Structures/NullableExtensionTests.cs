@@ -32,6 +32,9 @@ public class NullableExtensionTests
 	[Test]
 	public void TestNullableReferenceOfValueAsMaybe()
 	{
+		// ReSharper disable once SuggestVarOrType_BuiltInTypes
+		// ReSharper disable once ConvertToConstant.Local
+		// ReSharper disable once VariableCanBeNotNullable
 		string? nullableString = "banana";
 
 		var result = nullableString.AsMaybe();
