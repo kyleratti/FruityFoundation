@@ -16,7 +16,7 @@
       <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
       <PackageLicenseFile>LICENSE</PackageLicenseFile>
       <AssemblyName>FruityFoundation.Base</AssemblyName>
-      <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+      <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\LICENSE" Pack="true" PackagePath="" />
