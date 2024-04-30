@@ -7,12 +7,16 @@ namespace Base.Tests.Structures;
 public class NullableExtensionTests
 {
 	[Test]
-	public void TestNullableStructOfNullToMaybe() =>
-		Assert.AreEqual(Maybe.Empty<int>(), ((int?)null).ToMaybe());
-	
+	public void TestNullableStructOfNullToMaybe()
+	{
+		Assert.That(((int?)null).ToMaybe(), Is.EqualTo(Maybe.Empty<int>()));
+	}
+
 	[Test]
-	public void TestNullableStructOfValueToMaybe() =>
-		Assert.AreEqual(Maybe.Create(25), ((int?)25).ToMaybe());
+	public void TestNullableStructOfValueToMaybe()
+	{
+		Assert.That(((int?)25).ToMaybe(), Is.EqualTo(Maybe.Create(25)));
+	}
 
 	[Test]
 	public void TestNullableReferenceOfNullAsMaybe()

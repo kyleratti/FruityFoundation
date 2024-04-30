@@ -11,22 +11,22 @@ public class MaybeExtensionTests
 	[Test]
 	public void EnumerableFirstOrEmptyTests()
 	{
-		Assert.AreEqual(Maybe.Empty<string>(), Array.Empty<string>().FirstOrEmpty());
-		Assert.AreEqual(Maybe.Create<string>("banana"), new[] { "banana" }.FirstOrEmpty());
+		Assert.That(Array.Empty<string>().FirstOrEmpty(), Is.EqualTo(Maybe.Empty<string>()));
+		Assert.That(new[] { "banana" }.FirstOrEmpty(), Is.EqualTo(Maybe.Create<string>("banana")));
 	}
 
 	[Test]
 	public void TestToMaybe()
 	{
-		Assert.AreEqual(Maybe.Empty<int>(), Maybe.Empty<int>());
-		Assert.AreNotEqual(Maybe.Create(293921), Maybe.Create(2));
+		Assert.That(Maybe.Empty<int>(), Is.EqualTo(Maybe.Empty<int>()));
+		Assert.That(Maybe.Create(2), Is.Not.EqualTo(Maybe.Create(293921)));
 	}
 
 	[Test]
 	public void MaybeNullableTests()
 	{
-		Assert.IsNull(Maybe.Empty<int>().ToNullable());
-		Assert.IsNull(Maybe.Create(0, evalIsEmpty: () => true).ToNullable());
+		Assert.That(Maybe.Empty<int>().ToNullable(), Is.Null);
+		Assert.That(Maybe.Create(0, evalIsEmpty: () => true).ToNullable(), Is.Null);
 	}
 
 	[Test]
