@@ -36,9 +36,21 @@ public readonly record struct Maybe<T>
 		}
 	}
 
-	public T OrValue(T orVal) => HasValue ? Value : orVal;
+	public T OrValue(T orVal)
+	{
+		if (!HasValue)
+			return orVal;
 
-	public T OrEval(Func<T> valueFactory) => HasValue ? Value : valueFactory();
+		return Value;
+	}
+
+	public T OrEval(Func<T> valueFactory)
+	{
+		if (!HasValue)
+			return valueFactory();
+
+		return Value;
+	}
 
 	public bool Try(out T val)
 	{
@@ -47,17 +59,38 @@ public readonly record struct Maybe<T>
 		return HasValue;
 	}
 
-	public T OrThrow(string msg) =>
-		HasValue ? Value : throw new Exception(msg);
+	public T OrThrow(string msg)
+	{
+		if (!HasValue)
+			throw new ApplicationException(msg);
 
-	public T OrThrow(Func<string> messageFactory) =>
-		HasValue ? Value : throw new Exception(messageFactory());
+		return Value;
+	}
 
-	public T OrThrow(Func<Exception> exFactory) =>
-		HasValue ? Value : throw exFactory();
+	public T OrThrow(Func<string> messageFactory)
+	{
+		if (!HasValue)
+			throw new ApplicationException(messageFactory());
 
-	public Maybe<TOutput> Map<TOutput>(Func<T, TOutput> transformer) =>
-		HasValue ? Maybe.Create(transformer(Value)) : Maybe.Empty<TOutput>();
+		return Value;
+	}
+
+	public T OrThrow(Func<Exception> exFactory)
+	{
+		if (!HasValue)
+			throw exFactory();
+
+		return Value;
+	}
+
+	public Maybe<TOutput> Map<TOutput>(Func<T, TOutput> transformer)
+	{
+		if (!HasValue)
+			return Maybe.Empty<TOutput>();
+
+		var newValue = transformer(Value);
+		return new Maybe<TOutput>(newValue);
+	}
 
 	public Maybe<TOutput> Bind<TOutput>(Func<T, Maybe<TOutput>> binder) =>
 		HasValue ? binder(Value) : Maybe.Empty<TOutput>();
@@ -95,12 +128,11 @@ public readonly record struct Maybe<T>
 
 	public static implicit operator Maybe<T>(T val) => Maybe.Create(val);
 
-	public static explicit operator T(Maybe<T> val) => val.Value;
-
 	public override string ToString()
 	{
-		return (Try(out var val)
-			? val?.ToString()
-			: base.ToString())!;
+		if (!HasValue)
+			return "<empty>";
+
+		return _value?.ToString() ?? "<null>";
 	}
 }
