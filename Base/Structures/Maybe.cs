@@ -4,20 +4,25 @@ using System;
 
 public static class Maybe
 {
-	public static Maybe<T> Create<T>(T value) => new(value, hasValue: true);
-	public static Maybe<T> Create<T>(T value, Func<T, bool> hasValue) => new(value, hasValue: hasValue(value));
-	public static Maybe<T> Empty<T>() => new(val: default!, hasValue: false);
+	public static Maybe<T> Create<T>(T value) => new(value);
+
+	public static Maybe<T> Create<T>(T value, Func<bool> evalIsEmpty) =>
+		evalIsEmpty()
+			? Empty<T>()
+			: new Maybe<T>(value);
+
+	public static Maybe<T> Empty<T>() => new();
 }
 
 public readonly record struct Maybe<T>
 {
 	private readonly T _value;
-	public readonly bool HasValue;
+	public bool HasValue { get; }
 
-	internal Maybe(T val, bool hasValue)
+	internal Maybe(T val) : this()
 	{
 		_value = val;
-		HasValue = hasValue;
+		HasValue = true;
 	}
 
 	public T Value
@@ -77,7 +82,10 @@ public readonly record struct Maybe<T>
 				? default
 				: (TOutput)Convert.ChangeType(Value, t);
 
-			return Maybe.Create(output, hasValue: _ => output != null)!;
+			if (output == null)
+				return Maybe.Empty<TOutput>();
+
+			return Maybe.Create(output);
 		}
 		catch (InvalidCastException)
 		{

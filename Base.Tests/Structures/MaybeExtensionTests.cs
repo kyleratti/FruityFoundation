@@ -26,7 +26,7 @@ public class MaybeExtensionTests
 	public void MaybeNullableTests()
 	{
 		Assert.IsNull(Maybe.Empty<int>().ToNullable());
-		Assert.IsNull(Maybe.Create(0, hasValue: _ => false).ToNullable());
+		Assert.IsNull(Maybe.Create(0, evalIsEmpty: () => true).ToNullable());
 	}
 
 	[Test]
