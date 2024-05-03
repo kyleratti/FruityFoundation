@@ -1,4 +1,14 @@
 Changelog
+<a name="1.9.0"></a>
+## [1.9.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.9.0) (2024-05-03)
+
+### Features
+
+* add async extensions support for DbDataReader ([35d1742](https://www.github.com/kyleratti/FruityFoundation/commit/35d1742f00a35712c2be38f0151db343cf1405d3))
+* add cancellation token support to DbDataReaderExtensions ([04f94c2](https://www.github.com/kyleratti/FruityFoundation/commit/04f94c2441fc5f589c8a7ec7f4565f144e2d2d73))
+* add Maybe.TryParse ([b6f2ef3](https://www.github.com/kyleratti/FruityFoundation/commit/b6f2ef3aa6318a25fe771ae8aa7c15eb476d6b07))
+* specify ConfigureAwait(false) on async calls ([190db94](https://www.github.com/kyleratti/FruityFoundation/commit/190db946029f02035fbb7e345bb1210476c39441))
+
 <a name="1.8.1"></a>
 ## [1.8.1](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.8.1) (2024-2-8)
 
