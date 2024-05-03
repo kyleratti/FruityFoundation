@@ -114,6 +114,41 @@ public class DataReaderMaybeExtensionTests
 	}
 
 	[Test]
+	public void DataReader_TryGetChar_WithDbNull_ReturnsEmptyMaybe()
+	{
+		// Arrange
+		var fakeDataReader = A.Fake<IDataReader>();
+		A.CallTo(() => fakeDataReader.IsDBNull(0))
+			.Returns(true);
+
+		// Act
+		var result = fakeDataReader.TryGetChar(0);
+
+		// Assert
+		Assert.That(result, Is.InstanceOf<Maybe<char>>());
+		Assert.That(result.HasValue, Is.False);
+	}
+
+	[Test]
+	public void DataReader_TryGetChar_WithValue_ReturnsMaybeWithValue()
+	{
+		// Arrange
+		var fakeDataReader = A.Fake<IDataReader>();
+		A.CallTo(() => fakeDataReader.IsDBNull(0))
+			.Returns(false);
+		A.CallTo(() => fakeDataReader.GetChar(0))
+			.Returns('b');
+
+		// Act
+		var result = fakeDataReader.TryGetChar(0);
+
+		// Assert
+		Assert.That(result, Is.InstanceOf<Maybe<char>>());
+		Assert.That(result.HasValue, Is.True);
+		Assert.That(result.Value, Is.EqualTo('b'));
+	}
+
+	[Test]
 	public void DataReader_TryGetChars_WithDbNull_ReturnsEmptyMaybe()
 	{
 		// Arrange
