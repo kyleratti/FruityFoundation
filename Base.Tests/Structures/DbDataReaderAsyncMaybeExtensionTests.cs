@@ -8,7 +8,7 @@ using NUnit.Framework;
 
 namespace Base.Tests.Structures;
 
-public class DataReaderAsyncMaybeExtensionTests
+public class DbDataReaderAsyncMaybeExtensionTests
 {
 	[Test]
 	public async Task DbDataReader_TryGetBooleanAsync_WithDbNull_ReturnsEmptyMaybe()
