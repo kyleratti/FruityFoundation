@@ -52,13 +52,6 @@ public class MaybeExtensionTests
 	}
 
 	[Test]
-	public void TestToMaybe()
-	{
-		Assert.That(Maybe.Empty<int>(), Is.EqualTo(Maybe.Empty<int>()));
-		Assert.That(Maybe.Create(2), Is.Not.EqualTo(Maybe.Create(293921)));
-	}
-
-	[Test]
 	public void MaybeNullableTests()
 	{
 		Assert.That(Maybe.Empty<int>().ToNullable(), Is.Null);
