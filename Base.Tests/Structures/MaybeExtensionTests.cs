@@ -9,10 +9,46 @@ namespace Base.Tests.Structures;
 public class MaybeExtensionTests
 {
 	[Test]
-	public void EnumerableFirstOrEmptyTests()
+	public void Enumerable_FirstOrEmpty_WithEmptyEnumerable_ReturnsEmptyMaybe()
 	{
-		Assert.That(Array.Empty<string>().FirstOrEmpty(), Is.EqualTo(Maybe.Empty<string>()));
-		Assert.That(new[] { "banana" }.FirstOrEmpty(), Is.EqualTo(Maybe.Create<string>("banana")));
+		// Arrange
+		var data = Array.Empty<int>();
+
+		// Act
+		var result = data.FirstOrEmpty();
+
+		// Assert
+		Assert.That(result, Is.InstanceOf<Maybe<int>>());
+		Assert.That(result.HasValue, Is.False);
+	}
+
+	[Test]
+	public void Enumerable_FirstOrEmpty_WithMatchingPredicate_ReturnsMaybeWithValue()
+	{
+		// Arrange
+		var data = new[] { 1, 2, 3, 4 };
+
+		// Act
+		var result = data.FirstOrEmpty(x => x > 1);
+
+		// Assert
+		Assert.That(result, Is.InstanceOf<Maybe<int>>());
+		Assert.That(result.HasValue, Is.True);
+		Assert.That(result.Value, Is.EqualTo(2));
+	}
+
+	[Test]
+	public void Enumerable_FirstOrEmpty_WithNonMatchingPredicate_ReturnsEmptyMaybe()
+	{
+		// Arrange
+		var data = new[] { 1, 2, 3, 4 };
+
+		// Act
+		var result = data.FirstOrEmpty(x => x > 100);
+
+		// Assert
+		Assert.That(result, Is.InstanceOf<Maybe<int>>());
+		Assert.That(result.HasValue, Is.False);
 	}
 
 	[Test]
