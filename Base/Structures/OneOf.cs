@@ -2,14 +2,18 @@
 
 namespace FruityFoundation.Base.Structures;
 
-public class OneOf<T1, T2>
+public readonly record struct OneOf<T1, T2>
 {
-	private Maybe<T1> _itemOne { get; }
-	private Maybe<T2> _itemTwo { get; }
+	private readonly Maybe<T1> _itemOne;
+	private readonly Maybe<T2> _itemTwo;
 
 	public T1 ItemOne => _itemOne.OrThrow($"{nameof(ItemOne)} must have a value in order to be accessed");
 	public T2 ItemTwo => _itemTwo.OrThrow($"{nameof(ItemTwo)} must have a value in order to be accessed");
 
+	/// <summary>
+	/// Exposes the underlying object as an object.
+	/// This is useful for pattern matching from C#.
+	/// </summary>
 	public object? RawItem
 	{
 		get
@@ -46,14 +50,18 @@ public class OneOf<T1, T2>
 
 public class OneOf<T1, T2, T3>
 {
-	private Maybe<T1> _itemOne { get; }
-	private Maybe<T2> _itemTwo { get; }
-	private Maybe<T3> _itemThree { get; }
+	private readonly Maybe<T1> _itemOne;
+	private readonly Maybe<T2> _itemTwo;
+	private readonly Maybe<T3> _itemThree;
 
 	public T1 ItemOne => _itemOne.OrThrow($"{nameof(ItemOne)} must have a value in order to be accessed");
 	public T2 ItemTwo => _itemTwo.OrThrow($"{nameof(ItemTwo)} must have a value in order to be accessed");
 	public T3 ItemThree => _itemThree.OrThrow($"{nameof(ItemThree)} must have a value in order to be accessed");
 
+	/// <summary>
+	/// Exposes the underlying object as an object.
+	/// This is useful for pattern matching from C#.
+	/// </summary>
 	public object? RawItem
 	{
 		get
