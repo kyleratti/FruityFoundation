@@ -2,7 +2,7 @@
 
 namespace FruityFoundation.Base.Structures;
 
-public readonly struct Result<TSuccess, TFailure>
+public readonly record struct Result<TSuccess, TFailure>
 {
 	private readonly Maybe<TSuccess> _successVal;
 	private readonly Maybe<TFailure> _failureVal;
@@ -49,5 +49,7 @@ public readonly struct Result<TSuccess, TFailure>
 	}
 
 	public T Merge<T>(Func<TSuccess, T> onSuccess, Func<TFailure, T> onFailure) =>
-		IsSuccess ? onSuccess(_successVal.Value) : onFailure(_failureVal.Value);
+		IsSuccess
+			? onSuccess(_successVal.Value)
+			: onFailure(_failureVal.Value);
 }
