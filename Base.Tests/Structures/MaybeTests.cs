@@ -485,4 +485,33 @@ public class MaybeTests
 		// Assert
 		Assert.That(result, Is.EqualTo("banana"));
 	}
+
+	[Test]
+	public void Maybe_Create_ReturnsEmptyValue_WhenTryParseFails()
+	{
+		// Arrange
+		const string input = "bananas";
+
+		// Act
+		var result = Maybe.TryParse<string, int>(input, int.TryParse);
+
+		// Assert
+		Assert.That(result, Is.InstanceOf<Maybe<int>>());
+		Assert.That(result.HasValue, Is.False);
+	}
+
+	[Test]
+	public void Maybe_Create_ReturnsValue_WhenTryParseSucceeds()
+	{
+		// Arrange
+		const string input = "123";
+
+		// Act
+		var result = Maybe.TryParse<string, int>(input, int.TryParse);
+
+		// Assert
+		Assert.That(result, Is.InstanceOf<Maybe<int>>());
+		Assert.That(result.HasValue, Is.True);
+		Assert.That(result.Value, Is.EqualTo(123));
+	}
 }

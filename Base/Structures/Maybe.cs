@@ -2,6 +2,8 @@ namespace FruityFoundation.Base.Structures;
 
 using System;
 
+public delegate bool TryParseDelegate<in TInput, TOutput>(TInput input, out TOutput output);
+
 public static class Maybe
 {
 	public static Maybe<T> Create<T>(T value) => new(value);
@@ -10,6 +12,14 @@ public static class Maybe
 		evalIsEmpty()
 			? Empty<T>()
 			: new Maybe<T>(value);
+
+	public static Maybe<TOutput> TryParse<TInput, TOutput>(TInput value, TryParseDelegate<TInput, TOutput> tryParse)
+	{
+		if (!tryParse(value, out var output))
+			return Empty<TOutput>();
+
+		return new Maybe<TOutput>(output);
+	}
 
 	public static Maybe<T> Empty<T>() => new();
 }
