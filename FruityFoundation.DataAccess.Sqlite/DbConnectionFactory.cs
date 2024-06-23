@@ -16,7 +16,7 @@ public class DbConnectionFactory : IDbConnectionFactory
 	public INonTransactionalDbConnection<ReadWrite> CreateConnection()
 	{
 		if (string.IsNullOrWhiteSpace(_readWriteConnectionString))
-			throw new ApplicationException("ReadWrite connection string was not found or empty.");
+			throw new ApplicationException("ReadWrite connection string cannot be null or empty.");
 
 		var connection = new NonTransactionalDbConnection<ReadWrite>(_readWriteConnectionString);
 		return connection;
@@ -25,7 +25,7 @@ public class DbConnectionFactory : IDbConnectionFactory
 	public INonTransactionalDbConnection<ReadOnly> CreateReadOnlyConnection()
 	{
 		if (string.IsNullOrWhiteSpace(_readOnlyConnectionString))
-			throw new ApplicationException("ReadOnly connection string was not found or empty.");
+			throw new ApplicationException("ReadOnly connection string cannot be null or empty.");
 
 		var connection = new NonTransactionalDbConnection<ReadOnly>(_readOnlyConnectionString);
 		return connection;
