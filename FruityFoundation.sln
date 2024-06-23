@@ -14,6 +14,12 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FruityFoundation.Tests.FsBa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FruityFoundation.Tests.FsBaseInterop", "FruityFoundation.Tests.FsBaseInterop\FruityFoundation.Tests.FsBaseInterop.csproj", "{A64E73D3-EF87-4938-B01E-F9CC0B59F9DE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{5C3A014A-7931-4A36-95F0-5EFE15AB06A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FruityFoundation.DataAccess.Abstractions", "FruityFoundation.DataAccess.Abstractions\FruityFoundation.DataAccess.Abstractions.csproj", "{C003E247-C62E-4830-94E4-F274D8466A5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FruityFoundation.DataAccess.Sqlite", "FruityFoundation.DataAccess.Sqlite\FruityFoundation.DataAccess.Sqlite.csproj", "{BB25E92F-5D51-487A-8937-27E28EF5E20F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
