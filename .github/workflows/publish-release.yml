@@ -45,3 +45,5 @@ jobs:
           dotnet nuget push "FruityFoundation.Base.${{ steps.generate-version.outputs.RELEASE_VERSION_NUMBER }}.nupkg" --api-key=${{ secrets.NUGET_API_KEY }} --source=https://api.nuget.org/v3/index.json --skip-duplicate
           dotnet nuget push "FruityFoundation.FsBase.${{ steps.generate-version.outputs.RELEASE_VERSION_NUMBER }}.nupkg" --api-key=${{ secrets.NUGET_API_KEY }} --source=https://api.nuget.org/v3/index.json --skip-duplicate
           dotnet nuget push "FruityFoundation.Db.${{ steps.generate-version.outputs.RELEASE_VERSION_NUMBER }}.nupkg" --api-key=${{ secrets.NUGET_API_KEY }} --source=https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push "FruityFoundation.DataAccess.Abstractions.${{ steps.generate-version.outputs.RELEASE_VERSION_NUMBER }}.nupkg" --api-key=${{ secrets.NUGET_API_KEY }} --source=https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push "FruityFoundation.DataAccess.Core.${{ steps.generate-version.outputs.RELEASE_VERSION_NUMBER }}.nupkg" --api-key=${{ secrets.NUGET_API_KEY }} --source=https://api.nuget.org/v3/index.json --skip-duplicate
