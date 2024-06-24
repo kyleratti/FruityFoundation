@@ -7,6 +7,7 @@
         <Authors>Kyle Ratti</Authors>
         <RepositoryUrl>https://github.com/kyleratti/FruityFoundation</RepositoryUrl>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
     </PropertyGroup>
 
