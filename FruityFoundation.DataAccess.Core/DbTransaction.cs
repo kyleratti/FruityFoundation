@@ -2,21 +2,20 @@
 using System.Runtime.CompilerServices;
 using Dapper;
 using FruityFoundation.DataAccess.Abstractions;
-using Microsoft.Data.Sqlite;
 
-namespace FruityFoundation.DataAccess.Sqlite;
+namespace FruityFoundation.DataAccess.Core;
 
+// ReSharper disable once ClassWithVirtualMembersNeverInherited.Global
 public class DbTransaction<TConnectionType> : IDatabaseTransactionConnection<TConnectionType>
 	where TConnectionType : ConnectionType
 {
-	private readonly SqliteTransaction _transaction;
+	private readonly DbTransaction _transaction;
 
-	internal DbTransaction(SqliteTransaction transaction)
+	internal DbTransaction(DbTransaction transaction)
 	{
 		_transaction = transaction;
 	}
 
-	/// <exception cref="ArgumentNullException"></exception>
 	/// <inheritdoc />
 	public async Task<IEnumerable<T>> Query<T>(
 		string sql,
@@ -109,17 +108,34 @@ public class DbTransaction<TConnectionType> : IDatabaseTransactionConnection<TCo
 		await _transaction.RollbackAsync(cancellationToken);
 	}
 
+	protected virtual void Dispose(bool disposing)
+	{
+		if (disposing)
+		{
+#pragma warning disable IDISP007
+			_transaction.Dispose();
+#pragma warning restore IDISP007
+		}
+	}
+
 	/// <inheritdoc />
 	public void Dispose()
 	{
-		_transaction.Dispose();
+		Dispose(true);
 		GC.SuppressFinalize(this);
+	}
+
+	protected virtual async ValueTask DisposeAsyncCore()
+	{
+#pragma warning disable IDISP007
+		await _transaction.DisposeAsync();
+#pragma warning restore IDISP007
 	}
 
 	/// <inheritdoc />
 	public async ValueTask DisposeAsync()
 	{
-		await _transaction.DisposeAsync();
+		await DisposeAsyncCore();
 		GC.SuppressFinalize(this);
 	}
 }
