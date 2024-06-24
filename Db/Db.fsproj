@@ -24,4 +24,8 @@
       <Compile Include="Db.fs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="8.0.300" />
+  </ItemGroup>
+
 </Project>
