@@ -1,4 +1,18 @@
 Changelog
+<a name="1.10.0"></a>
+## [1.10.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.10.0) (2024-06-24)
+
+### Features
+
+* initial port of data access ([de8e30d](https://www.github.com/kyleratti/FruityFoundation/commit/de8e30dbb41d8d70b685324847b07f7800e31488))
+* make data access layer generic ([1266932](https://www.github.com/kyleratti/FruityFoundation/commit/1266932d4e5f76adb6a181234e644a74da273fa0))
+* multi target .NET 6 and .NET 8 ([2242fe8](https://www.github.com/kyleratti/FruityFoundation/commit/2242fe8733f808fb6055baa14cf28123a31fa9dc))
+
+### Bug Fixes
+
+* add missing version node ([90c0740](https://www.github.com/kyleratti/FruityFoundation/commit/90c074077806f0e470081463480a716bcf552b0c))
+* include license file ([f169ca3](https://www.github.com/kyleratti/FruityFoundation/commit/f169ca3287116ee17c5e32485af8a9b9107603b8))
+
 <a name="1.9.0"></a>
 ## [1.9.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.9.0) (2024-05-03)
 
