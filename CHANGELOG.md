@@ -1,4 +1,7 @@
 Changelog
+<a name="1.12.1"></a>
+## [1.12.1](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.12.1) (2024-07-06)
+
 <a name="1.12.0"></a>
 ## [1.12.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.12.0) (2024-07-06)
 
