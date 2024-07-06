@@ -1,4 +1,11 @@
 Changelog
+<a name="1.12.0"></a>
+## [1.12.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.12.0) (2024-07-06)
+
+### Features
+
+* add FSharp database abstraction layer ([d745706](https://www.github.com/kyleratti/FruityFoundation/commit/d7457060829e897c726f5d7522f56bfac11b8e9a))
+
 <a name="1.11.0"></a>
 ## [1.11.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.11.0) (2024-07-06)
 
