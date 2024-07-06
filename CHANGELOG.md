@@ -1,4 +1,11 @@
 Changelog
+<a name="1.11.0"></a>
+## [1.11.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.11.0) (2024-07-06)
+
+### Features
+
+* add data access DI helper ([6cbccd3](https://www.github.com/kyleratti/FruityFoundation/commit/6cbccd3d7dd8308bd6e65fd28362f36c61dedd5e))
+
 <a name="1.10.0"></a>
 ## [1.10.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.10.0) (2024-06-24)
 
