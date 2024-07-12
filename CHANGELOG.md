@@ -1,4 +1,19 @@
 Changelog
+<a name="2.0.0"></a>
+## [2.0.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v2.0.0) (2024-07-12)
+
+### Features
+
+* factor connection factory into Sqlite package ([0b4f638](https://www.github.com/kyleratti/FruityFoundation/commit/0b4f638cb98568dcbb92baa1a4d76d5f91f6316b))
+
+### Bug Fixes
+
+* set new package to same version number ([3d2c252](https://www.github.com/kyleratti/FruityFoundation/commit/3d2c2524c1c61546e7ae51ce6a6893cebf91e1ee))
+
+### Breaking Changes
+
+* factor connection factory into Sqlite package ([0b4f638](https://www.github.com/kyleratti/FruityFoundation/commit/0b4f638cb98568dcbb92baa1a4d76d5f91f6316b))
+
 <a name="1.12.1"></a>
 ## [1.12.1](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v1.12.1) (2024-07-06)
 
