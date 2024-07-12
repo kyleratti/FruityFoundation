@@ -24,6 +24,10 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FruityFoundation.DataAccess
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FruityFoundation.Tests.DataAccess.Abstractions.FSharp", "FruityFoundation.Tests.DataAccess.Abstractions.FSharp\FruityFoundation.Tests.DataAccess.Abstractions.FSharp.fsproj", "{27F4FB64-7A51-4315-BDAA-6EE07736C976}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FruityFoundation.DataAccess.Sqlite", "FruityFoundation.DataAccess.Sqlite\FruityFoundation.DataAccess.Sqlite.csproj", "{2DB2E605-68E8-47E3-A183-985C1A52B56A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FruityFoundation.Tests.DataAccess.Sqlite", "FruityFoundation.Tests.DataAccess.Sqlite\FruityFoundation.Tests.DataAccess.Sqlite.csproj", "{A1AB7658-7310-490A-82BE-DAABCC204EA4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +74,14 @@ Global
 		{27F4FB64-7A51-4315-BDAA-6EE07736C976}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27F4FB64-7A51-4315-BDAA-6EE07736C976}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27F4FB64-7A51-4315-BDAA-6EE07736C976}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DB2E605-68E8-47E3-A183-985C1A52B56A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DB2E605-68E8-47E3-A183-985C1A52B56A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DB2E605-68E8-47E3-A183-985C1A52B56A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DB2E605-68E8-47E3-A183-985C1A52B56A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1AB7658-7310-490A-82BE-DAABCC204EA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1AB7658-7310-490A-82BE-DAABCC204EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1AB7658-7310-490A-82BE-DAABCC204EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1AB7658-7310-490A-82BE-DAABCC204EA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{50A75644-A1C3-4495-9DEB-DBB12D9334B5} = {B44178DF-5B81-4029-90FA-2BF8E2A1EDBF}
@@ -79,5 +91,7 @@ Global
 		{B65527CC-218A-4EA3-93DC-985713B5DFF4} = {5C3A014A-7931-4A36-95F0-5EFE15AB06A3}
 		{B2E0156B-B631-4C80-A129-59472D2D0A77} = {5C3A014A-7931-4A36-95F0-5EFE15AB06A3}
 		{27F4FB64-7A51-4315-BDAA-6EE07736C976} = {B44178DF-5B81-4029-90FA-2BF8E2A1EDBF}
+		{2DB2E605-68E8-47E3-A183-985C1A52B56A} = {5C3A014A-7931-4A36-95F0-5EFE15AB06A3}
+		{A1AB7658-7310-490A-82BE-DAABCC204EA4} = {B44178DF-5B81-4029-90FA-2BF8E2A1EDBF}
 	EndGlobalSection
 EndGlobal

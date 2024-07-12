@@ -2,31 +2,28 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
 
         <IsPackable>false</IsPackable>
-        <GenerateProgramFile>false</GenerateProgramFile>
         <IsTestProject>true</IsTestProject>
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="ReadWriteDbTests.fs" />
-        <Compile Include="ReadOnlyDbTests.fs" />
-        <Compile Include="Program.fs"/>
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="coverlet.collector" Version="6.0.0"/>
-        <PackageReference Include="FakeItEasy" Version="8.3.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0"/>
         <PackageReference Include="NUnit" Version="3.14.0"/>
         <PackageReference Include="NUnit.Analyzers" Version="3.9.0"/>
         <PackageReference Include="NUnit3TestAdapter" Version="4.5.0"/>
-        <PackageReference Update="FSharp.Core" Version="8.0.300" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\FruityFoundation.DataAccess.Abstractions.FSharp\FruityFoundation.DataAccess.Abstractions.FSharp.fsproj" />
+        <Using Include="NUnit.Framework"/>
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\FruityFoundation.DataAccess.Abstractions\FruityFoundation.DataAccess.Abstractions.csproj" />
+      <ProjectReference Include="..\FruityFoundation.DataAccess.Sqlite\FruityFoundation.DataAccess.Sqlite.csproj" />
     </ItemGroup>
 
 </Project>

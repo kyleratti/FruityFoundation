@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <ImplicitUsings>enable</ImplicitUsings>
@@ -6,7 +6,7 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>Kyle Ratti</Authors>
         <RepositoryUrl>https://github.com/kyleratti/FruityFoundation</RepositoryUrl>
-        <Version>1.12.1</Version>
+        <Version>1.12.2</Version>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
@@ -18,10 +18,12 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FruityFoundation.DataAccess.Abstractions\FruityFoundation.DataAccess.Abstractions.csproj" />
+      <ProjectReference Include="..\FruityFoundation.DataAccess.Core\FruityFoundation.DataAccess.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Dapper" Version="2.1.35" />
+      <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.6" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
     </ItemGroup>
 
 </Project>
