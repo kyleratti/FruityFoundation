@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using FruityFoundation.Base.Structures;
 
 namespace FruityFoundation.DataAccess.Abstractions;
 

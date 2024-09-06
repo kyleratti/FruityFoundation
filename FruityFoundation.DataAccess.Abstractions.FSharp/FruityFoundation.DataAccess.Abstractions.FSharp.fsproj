@@ -21,7 +21,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Base\Base.csproj" />
       <ProjectReference Include="..\FruityFoundation.DataAccess.Abstractions\FruityFoundation.DataAccess.Abstractions.csproj" />
+      <ProjectReference Include="..\FsBase\FsBase.fsproj" />
     </ItemGroup>
 
     <ItemGroup>

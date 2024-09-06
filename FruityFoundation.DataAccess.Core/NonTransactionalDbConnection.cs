@@ -2,6 +2,7 @@
 using System.Data.Common;
 using System.Runtime.CompilerServices;
 using Dapper;
+using FruityFoundation.Base.Structures;
 using FruityFoundation.DataAccess.Abstractions;
 
 namespace FruityFoundation.DataAccess.Core;
@@ -47,6 +48,15 @@ public class NonTransactionalDbConnection<TConnectionType> : INonTransactionalDb
 		object? param = null,
 		CancellationToken cancellationToken = default
 	) => await _connection.QuerySingleAsync<T>(new CommandDefinition(sql, param, cancellationToken: cancellationToken));
+
+	/// <inheritdoc />
+	public async Task<Maybe<T>> TryQueryFirst<T>(
+		string sql,
+		object? param = null,
+		CancellationToken cancellationToken = default
+	) =>
+		await _connection.QueryUnbufferedAsync<T>(sql, param, transaction: null)
+			.FirstOrEmptyAsync(cancellationToken);
 
 	/// <inheritdoc />
 	public async Task Execute(

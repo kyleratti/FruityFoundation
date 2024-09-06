@@ -5,6 +5,7 @@ open System.Collections.Generic
 open System.Threading
 open FSharp.Control
 open FruityFoundation.DataAccess.Abstractions
+open FruityFoundation.FsBase
 
 let private toKeyValuePair (parms : (string * obj) seq) =
     parms
@@ -20,6 +21,11 @@ let queryUnbuffered<'a> (connection : IDatabaseConnection<ReadOnly>) (cancellati
 
 let querySingle<'a> (connection : IDatabaseConnection<ReadOnly>) (cancellationToken : CancellationToken) (sql : string) (parms : (string * obj) seq) = task {
     return! connection.QuerySingle<'a>(sql, parms |> toKeyValuePair, cancellationToken)
+}
+
+let tryQueryFirst<'a> (connection : ReadOnly IDatabaseConnection) (cancellationToken : CancellationToken) (sql : string) (parms : (string * obj) seq) = task {
+    let! result = connection.TryQueryFirst(sql, parms |> toKeyValuePair, cancellationToken)
+    return result |> Option.fromMaybe
 }
 
 let execute (connection : IDatabaseConnection<ReadOnly>) (cancellationToken : CancellationToken) (sql : string) (parms : (string * obj) seq) = task {
