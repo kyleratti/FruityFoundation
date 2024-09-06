@@ -24,7 +24,7 @@ let querySingle<'a> (connection : IDatabaseConnection<ReadOnly>) (cancellationTo
 }
 
 let tryQueryFirst<'a> (connection : ReadOnly IDatabaseConnection) (cancellationToken : CancellationToken) (sql : string) (parms : (string * obj) seq) = task {
-    let! result = connection.TryQueryFirst(sql, parms |> toKeyValuePair, cancellationToken)
+    let! result = connection.TryQueryFirst<'a>(sql, parms |> toKeyValuePair, cancellationToken)
     return result |> Option.fromMaybe
 }
 
