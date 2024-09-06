@@ -1,4 +1,11 @@
 Changelog
+<a name="2.1.1"></a>
+## [2.1.1](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v2.1.1) (2024-09-06)
+
+### Bug Fixes
+
+* specify generic ([6df46d3](https://www.github.com/kyleratti/FruityFoundation/commit/6df46d3c2b8582e675eaa8677fe0e72287c77b6e))
+
 <a name="2.1.0"></a>
 ## [2.1.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v2.1.0) (2024-09-06)
 
