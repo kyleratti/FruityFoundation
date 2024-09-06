@@ -1,4 +1,12 @@
 Changelog
+<a name="2.1.0"></a>
+## [2.1.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v2.1.0) (2024-09-06)
+
+### Features
+
+* add F# tryQueryFirst ([ad62629](https://www.github.com/kyleratti/FruityFoundation/commit/ad62629a1d92248ce87b125b7b960dca215ce44b))
+* add FirstOrEmptyAsync ([4dbba5c](https://www.github.com/kyleratti/FruityFoundation/commit/4dbba5c2f3d90ad1709d91aee13d32b9cb672835))
+
 <a name="2.0.0"></a>
 ## [2.0.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v2.0.0) (2024-07-12)
 
