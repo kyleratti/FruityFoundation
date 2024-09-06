@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace FruityFoundation.Base.Structures;
 
@@ -19,6 +20,64 @@ public static class MaybeExtensions
 			if (pred(item))
 				return item;
 		
+		return Maybe.Empty<T>();
+	}
+
+	public static async ValueTask<Maybe<T>> FirstOrEmptyAsync<T>(this IAsyncEnumerable<T> source, CancellationToken cancellationToken = default)
+	{
+		if (source is IList<T> { Count: > 0 } list)
+			return Maybe.Create(list[0]);
+
+		await using var e = source
+			.ConfigureAwait(false)
+			.WithCancellation(cancellationToken)
+			.GetAsyncEnumerator();
+
+		if (await e.MoveNextAsync())
+			return e.Current;
+
+		return Maybe.Empty<T>();
+	}
+
+	public static async ValueTask<Maybe<T>> FirstOrEmptyAsync<T>(this IAsyncEnumerable<T> source, Func<T, bool> predicate, CancellationToken cancellationToken = default)
+	{
+		if (source is IList<T> { Count: > 0 } list)
+			return list[0];
+
+		await using var e = source
+			.ConfigureAwait(false)
+			.WithCancellation(cancellationToken)
+			.GetAsyncEnumerator();
+
+		while (await e.MoveNextAsync())
+		{
+			var value = e.Current;
+
+			if (predicate(value))
+				return value;
+		}
+
+		return Maybe.Empty<T>();
+	}
+
+	public static async ValueTask<Maybe<T>> FirstOrEmptyAsync<T>(this IAsyncEnumerable<T> source, Func<T, ValueTask<bool>> asyncPredicate, CancellationToken cancellationToken = default)
+	{
+		if (source is IList<T> { Count: > 0 } list)
+			return list[0];
+
+		await using var e = source
+			.ConfigureAwait(false)
+			.WithCancellation(cancellationToken)
+			.GetAsyncEnumerator();
+
+		while (await e.MoveNextAsync())
+		{
+			var value = e.Current;
+
+			if (await asyncPredicate(value).ConfigureAwait(false))
+				return value;
+		}
+
 		return Maybe.Empty<T>();
 	}
 

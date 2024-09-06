@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using FruityFoundation.Base.Structures;
 using NUnit.Framework;
 
@@ -45,6 +46,86 @@ public class MaybeExtensionTests
 
 		// Act
 		var result = data.FirstOrEmpty(x => x > 100);
+
+		// Assert
+		Assert.That(result, Is.InstanceOf<Maybe<int>>());
+		Assert.That(result.HasValue, Is.False);
+	}
+
+	[Test]
+	public async Task Enumerable_FirstOrEmptyAsync_WithEmptyEnumerable_ReturnsEmptyMaybe()
+	{
+		// Arrange
+		var data = ToAsyncEnumerable(Array.Empty<int>());
+
+		// Act
+		var result = await data.FirstOrEmptyAsync();
+
+		// Assert
+		Assert.That(result, Is.InstanceOf<Maybe<int>>());
+		Assert.That(result.HasValue, Is.False);
+	}
+
+	[Test]
+	public async Task Enumerable_FirstOrEmptyAsync_WithMatchingPredicate_ReturnsMaybeWithValue()
+	{
+		// Arrange
+		var data = ToAsyncEnumerable([1, 2, 3, 4]);
+
+		// Act
+		var result = await data.FirstOrEmptyAsync(x => x > 1);
+
+		// Assert
+		Assert.That(result, Is.InstanceOf<Maybe<int>>());
+		Assert.That(result.HasValue, Is.True);
+		Assert.That(result.Value, Is.EqualTo(2));
+	}
+
+	[Test]
+	public async Task Enumerable_FirstOrEmptyAsync_WithMatchingAsyncPredicate_ReturnsMaybeWithValue()
+	{
+		// Arrange
+		var data = ToAsyncEnumerable([1, 2, 3, 4]);
+
+		// Act
+		var result = await data.FirstOrEmptyAsync(async x =>
+		{
+			await Task.Yield();
+			return x > 1;
+		});
+
+		// Assert
+		Assert.That(result, Is.InstanceOf<Maybe<int>>());
+		Assert.That(result.HasValue, Is.True);
+		Assert.That(result.Value, Is.EqualTo(2));
+	}
+
+	[Test]
+	public async Task Enumerable_FirstOrEmptyAsync_WithNonMatchingPredicate_ReturnsEmptyMaybe()
+	{
+		// Arrange
+		var data = ToAsyncEnumerable([1, 2, 3, 4]);
+
+		// Act
+		var result = await data.FirstOrEmptyAsync(x => x > 100);
+
+		// Assert
+		Assert.That(result, Is.InstanceOf<Maybe<int>>());
+		Assert.That(result.HasValue, Is.False);
+	}
+
+	[Test]
+	public async Task Enumerable_FirstOrEmptyAsync_WithNonMatchingAsyncPredicate_ReturnsEmptyMaybe()
+	{
+		// Arrange
+		var data = ToAsyncEnumerable([1, 2, 3, 4]);
+
+		// Act
+		var result = await data.FirstOrEmptyAsync(async x =>
+		{
+			await Task.Yield();
+			return x > 100;
+		});
 
 		// Assert
 		Assert.That(result, Is.InstanceOf<Maybe<int>>());
@@ -124,5 +205,13 @@ public class MaybeExtensionTests
 
 		Assert.That(result, Is.InstanceOf<Maybe<int>>());
 		Assert.That(result.HasValue, Is.False);
+	}
+
+	private static async IAsyncEnumerable<T> ToAsyncEnumerable<T>(IEnumerable<T> enumerable)
+	{
+		foreach (var item in enumerable)
+			yield return item;
+
+		await Task.Yield();
 	}
 }
