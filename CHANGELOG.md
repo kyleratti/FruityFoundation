@@ -1,4 +1,16 @@
 Changelog
+<a name="3.0.0"></a>
+## [3.0.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v3.0.0) (2025-01-14)
+
+### ✨ Features
+
+* expose the raw DbConnection ([6d40b88](https://www.github.com/kyleratti/FruityFoundation/commit/6d40b88b939e9b5341e53b6e4799cc8609f05a74))
+* support .NET 9, drop .NET 6 ([3b2feab](https://www.github.com/kyleratti/FruityFoundation/commit/3b2feabc403092f60847cd9cf231afcb09469fdf))
+
+### Breaking Changes
+
+* support .NET 9, drop .NET 6 ([3b2feab](https://www.github.com/kyleratti/FruityFoundation/commit/3b2feabc403092f60847cd9cf231afcb09469fdf))
+
 <a name="2.1.1"></a>
 ## [2.1.1](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v2.1.1) (2024-09-06)
 
