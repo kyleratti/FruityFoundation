@@ -18,6 +18,18 @@ public class DbTransaction<TConnectionType> : IDatabaseTransactionConnection<TCo
 	}
 
 	/// <inheritdoc />
+	public DbConnection RawDbConnection
+	{
+		get
+		{
+			if (_transaction.Connection is not { } tx)
+				throw new InvalidOperationException("Transaction connection cannot be null");
+
+			return tx;
+		}
+	}
+
+	/// <inheritdoc />
 	public async Task<IEnumerable<T>> Query<T>(
 		string sql,
 		object? param = null,

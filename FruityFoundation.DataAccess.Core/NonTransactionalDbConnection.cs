@@ -22,6 +22,18 @@ public class NonTransactionalDbConnection<TConnectionType> : INonTransactionalDb
 	}
 
 	/// <inheritdoc />
+	public DbConnection RawDbConnection
+	{
+		get
+		{
+			if (_connection is null)
+				throw new InvalidOperationException("Transaction connection cannot be null");
+
+			return _connection;
+		}
+	}
+
+	/// <inheritdoc />
 	public async Task<IEnumerable<T>> Query<T>(
 		string sql,
 		object? param = null,
