@@ -27,7 +27,7 @@ public class NonTransactionalDbConnection<TConnectionType> : INonTransactionalDb
 		get
 		{
 			if (_connection is null)
-				throw new InvalidOperationException("Transaction connection cannot be null");
+				throw new InvalidOperationException("Database connection cannot be null");
 
 			return _connection;
 		}

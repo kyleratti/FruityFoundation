@@ -9,7 +9,7 @@
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <Version>2.1.1</Version>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
-        <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
+        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
         <LangVersion>8.0</LangVersion>
     </PropertyGroup>
 
@@ -30,7 +30,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Update="FSharp.Core" Version="8.0.300" />
+      <PackageReference Update="FSharp.Core" Version="9.0.100" />
     </ItemGroup>
 
     <ItemGroup>
