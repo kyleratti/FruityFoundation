@@ -22,6 +22,7 @@ let DbDataReader_ToTaskSeq_Yields_Reader_When_ReadAsync_True () = task {
     // Act
     let! result =
         fakeReader
+        |> Task.fromResult
         |> toTaskSeq CancellationToken.None
         |> TaskSeq.map (fun reader -> reader.GetInt32 0)
         |> TaskSeq.toArrayAsync
