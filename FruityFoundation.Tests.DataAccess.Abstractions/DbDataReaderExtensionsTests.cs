@@ -32,7 +32,7 @@ public class DbDataReaderExtensionsTests
 			.ReturnsNextFromSequence(1, 2, 3, 4);
 
 		// Act
-		var items = await _fakeReader
+		var items = await Task.FromResult(_fakeReader)
 			.ToAsyncEnumerable(CancellationToken.None)
 			.Select(reader => reader.GetInt32(0))
 			.ToArrayAsync();

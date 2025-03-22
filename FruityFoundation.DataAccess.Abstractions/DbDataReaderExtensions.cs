@@ -6,15 +6,15 @@ namespace FruityFoundation.DataAccess.Abstractions;
 public static class DbDataReaderExtensions
 {
 	public static async IAsyncEnumerable<DbDataReader> ToAsyncEnumerable(
-		this DbDataReader reader,
+		this Task<DbDataReader> reader,
 		[EnumeratorCancellation] CancellationToken cancellationToken
 	)
 	{
-		await using var readerHandle = reader;
+		await using var readerHandle = await reader;
 
-		while (await reader.ReadAsync(cancellationToken))
+		while (await readerHandle.ReadAsync(cancellationToken))
 		{
-			yield return reader;
+			yield return readerHandle;
 		}
 	}
 }
