@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FruityFoundation.DataAccess
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FruityFoundation.Tests.DataAccess.Sqlite", "FruityFoundation.Tests.DataAccess.Sqlite\FruityFoundation.Tests.DataAccess.Sqlite.csproj", "{A1AB7658-7310-490A-82BE-DAABCC204EA4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FruityFoundation.Tests.DataAccess.Abstractions", "FruityFoundation.Tests.DataAccess.Abstractions\FruityFoundation.Tests.DataAccess.Abstractions.csproj", "{1676FAB5-B19B-40BF-BCA7-3B3640666541}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,10 @@ Global
 		{A1AB7658-7310-490A-82BE-DAABCC204EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1AB7658-7310-490A-82BE-DAABCC204EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1AB7658-7310-490A-82BE-DAABCC204EA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1676FAB5-B19B-40BF-BCA7-3B3640666541}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1676FAB5-B19B-40BF-BCA7-3B3640666541}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1676FAB5-B19B-40BF-BCA7-3B3640666541}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1676FAB5-B19B-40BF-BCA7-3B3640666541}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{50A75644-A1C3-4495-9DEB-DBB12D9334B5} = {B44178DF-5B81-4029-90FA-2BF8E2A1EDBF}
@@ -93,5 +99,6 @@ Global
 		{27F4FB64-7A51-4315-BDAA-6EE07736C976} = {B44178DF-5B81-4029-90FA-2BF8E2A1EDBF}
 		{2DB2E605-68E8-47E3-A183-985C1A52B56A} = {5C3A014A-7931-4A36-95F0-5EFE15AB06A3}
 		{A1AB7658-7310-490A-82BE-DAABCC204EA4} = {B44178DF-5B81-4029-90FA-2BF8E2A1EDBF}
+		{1676FAB5-B19B-40BF-BCA7-3B3640666541} = {B44178DF-5B81-4029-90FA-2BF8E2A1EDBF}
 	EndGlobalSection
 EndGlobal

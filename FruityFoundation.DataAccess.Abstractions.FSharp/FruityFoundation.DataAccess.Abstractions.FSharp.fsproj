@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Compile Include="DbDataReader.fs" />
         <Compile Include="ReadOnlyDb.fs" />
         <Compile Include="ReadWriteDb.fs" />
     </ItemGroup>
