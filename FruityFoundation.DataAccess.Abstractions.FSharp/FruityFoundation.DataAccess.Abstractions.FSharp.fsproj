@@ -3,7 +3,7 @@
     <PropertyGroup>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>3.1.0</Version>
+        <Version>3.1.1</Version>
         <Authors>Kyle Ratti</Authors>
         <RepositoryUrl>https://github.com/kyleratti/FruityFoundation</RepositoryUrl>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>

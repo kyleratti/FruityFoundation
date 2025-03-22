@@ -1,4 +1,12 @@
 Changelog
+<a name="3.1.1"></a>
+## [3.1.1](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v3.1.1) (2025-03-22)
+
+### 🐛 Bug Fixes
+
+* ToAsyncEnumerable should accept DbDataReader Task ([db2c26d](https://www.github.com/kyleratti/FruityFoundation/commit/db2c26d6ed8069300c1b9f87f5d8d46dc7a06d9b))
+* ToTaskSeq should accept DbDataReader Task ([5e4d509](https://www.github.com/kyleratti/FruityFoundation/commit/5e4d509f7f43386c487436855543624aed67779a))
+
 <a name="3.1.0"></a>
 ## [3.1.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v3.1.0) (2025-03-22)
 
