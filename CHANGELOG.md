@@ -1,4 +1,15 @@
 Changelog
+<a name="3.1.0"></a>
+## [3.1.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v3.1.0) (2025-03-22)
+
+### ✨ Features
+
+* add DbDataReader.ToAsyncEnumerable ([d9561b7](https://www.github.com/kyleratti/FruityFoundation/commit/d9561b7a572188fb5447488e1ba56c24f3517be8))
+
+### 🐛 Bug Fixes
+
+* return int from non-query ([b783fd2](https://www.github.com/kyleratti/FruityFoundation/commit/b783fd203f26b9b0ec55f1c6e881c1e3f30eaf43))
+
 <a name="3.0.0"></a>
 ## [3.0.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v3.0.0) (2025-01-14)
 
