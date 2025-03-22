@@ -83,14 +83,14 @@ public class DbTransaction<TConnectionType> : IDatabaseTransactionConnection<TCo
 	}
 
 	/// <inheritdoc />
-	public async Task Execute(string sql, object? param = null, CancellationToken cancellationToken = default)
+	public async Task<int> Execute(string sql, object? param = null, CancellationToken cancellationToken = default)
 	{
 		if (_transaction.Connection is not { } conn)
 			throw new InvalidOperationException("Transaction connection cannot be null");
 
 		var command = new CommandDefinition(sql, param, transaction: _transaction, cancellationToken: cancellationToken);
 
-		await conn.ExecuteAsync(command);
+		return await conn.ExecuteAsync(command);
 	}
 
 	/// <inheritdoc />

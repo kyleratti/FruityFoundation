@@ -71,7 +71,7 @@ public class NonTransactionalDbConnection<TConnectionType> : INonTransactionalDb
 			.FirstOrEmptyAsync(cancellationToken);
 
 	/// <inheritdoc />
-	public async Task Execute(
+	public async Task<int> Execute(
 		string sql,
 		object? param = null,
 		CancellationToken cancellationToken = default
