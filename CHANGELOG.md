@@ -1,4 +1,12 @@
 Changelog
+<a name="3.2.0"></a>
+## [3.2.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v3.2.0) (2025-03-26)
+
+### ✨ Features
+
+* add evalIsEmpty overload to avoid allocation ([bf411be](https://www.github.com/kyleratti/FruityFoundation/commit/bf411befd1832ca6bc8dc8208b46c77637d84849))
+* add Maybe<T>.Filter ([cb92dcb](https://www.github.com/kyleratti/FruityFoundation/commit/cb92dcbf4c8025307a67b7c2e3fadaf56df04b9d))
+
 <a name="3.1.1"></a>
 ## [3.1.1](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v3.1.1) (2025-03-22)
 
