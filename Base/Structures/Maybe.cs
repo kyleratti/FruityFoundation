@@ -151,6 +151,19 @@ public readonly record struct Maybe<T>
 		}
 	}
 
+	/// <summary>
+	/// Filters the value contained in the Maybe.
+	/// </summary>
+	/// <param name="predicate">A function that evaluates whether the value contained in the Maybe should remain, or be filtered out.</param>
+	/// <returns>The input if the predicate evaluates to true; otherwise, Empty.</returns>
+	public Maybe<T> Filter(Func<T, bool> predicate)
+	{
+		if (!HasValue || !predicate(Value))
+			return Maybe.Empty<T>();
+
+		return this;
+	}
+
 	public static implicit operator Maybe<T>(T val) => Maybe.Create(val);
 
 	public override string ToString()

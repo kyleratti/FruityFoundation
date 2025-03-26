@@ -514,4 +514,33 @@ public class MaybeTests
 		Assert.That(result.HasValue, Is.True);
 		Assert.That(result.Value, Is.EqualTo(123));
 	}
+
+	[Test]
+	public void Filter_ReturnsEmptyMaybe_WhenPredicateIsTrue()
+	{
+		// Arrange
+		var input = Maybe.Create("");
+		static bool HasNonEmptyString(string x) => !string.IsNullOrEmpty(x);
+
+		// Act
+		var result = input.Filter(HasNonEmptyString);
+
+		// Assert
+		Assert.That(result.HasValue, Is.False);
+	}
+
+	[Test]
+	public void Filter_ReturnsMaybeWithValue_WhenPredicateIsFalse()
+	{
+		// Arrange
+		var input = Maybe.Create("banana");
+		static bool HasNonEmptyString(string x) => !string.IsNullOrEmpty(x);
+
+		// Act
+		var result = input.Filter(HasNonEmptyString);
+
+		// Assert
+		Assert.That(result.HasValue, Is.True);
+		Assert.That(result.Value, Is.EqualTo("banana"));
+	}
 }
