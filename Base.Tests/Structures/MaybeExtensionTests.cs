@@ -140,6 +140,36 @@ public class MaybeExtensionTests
 	}
 
 	[Test]
+	public void Create_WithEvalIsEmpty_ReturnsEmpty_WhenEvalIsEmpty_IsFalse()
+	{
+		// Arrange
+		const string value = "";
+		Func<string, bool> evalIsEmpty = string.IsNullOrEmpty;
+
+		// Act
+		var result = Maybe.Create<string>(value, evalIsEmpty);
+
+		// Assert
+		Assert.That(result.HasValue, Is.False);
+		Assert.Throws<InvalidOperationException>(() => _ = result.Value);
+	}
+
+	[Test]
+	public void Create_WithEvalIsEmpty_ReturnsMaybeWithValue_WhenEvalIsEmpty_IsFalse()
+	{
+		// Arrange
+		const string value = "banana";
+		Func<string, bool> evalIsEmpty = string.IsNullOrEmpty;
+
+		// Act
+		var result = Maybe.Create<string>(value, evalIsEmpty);
+
+		// Assert
+		Assert.That(result.HasValue, Is.True);
+		Assert.That(result.Value, Is.EqualTo("banana"));
+	}
+
+	[Test]
 	public void IDictionaryTests_TryGetValue_ReturnsMaybeWithValue_ForValidKey()
 	{
 		var dict = new Dictionary<string, int>

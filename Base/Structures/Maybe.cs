@@ -8,10 +8,21 @@ public static class Maybe
 {
 	public static Maybe<T> Create<T>(T value) => new(value);
 
-	public static Maybe<T> Create<T>(T value, Func<bool> evalIsEmpty) =>
-		evalIsEmpty()
-			? Empty<T>()
-			: new Maybe<T>(value);
+	public static Maybe<T> Create<T>(T value, Func<bool> evalIsEmpty)
+	{
+		if (evalIsEmpty())
+			return Maybe.Empty<T>();
+
+		return new Maybe<T>(value);
+	}
+
+	public static Maybe<T> Create<T>(T value, Func<T, bool> evalIsEmpty)
+	{
+		if (evalIsEmpty(value))
+			return Maybe.Empty<T>();
+
+		return new Maybe<T>(value);
+	}
 
 	public static Maybe<TOutput> TryParse<TInput, TOutput>(TInput value, TryParseDelegate<TInput, TOutput> tryParse)
 	{
@@ -35,6 +46,10 @@ public readonly record struct Maybe<T>
 		HasValue = true;
 	}
 
+	/// <summary>
+	/// The unwrapped value.
+	/// </summary>
+	/// <exception cref="InvalidOperationException">Thrown when the Maybe does not have a value.</exception>
 	public T Value
 	{
 		get
