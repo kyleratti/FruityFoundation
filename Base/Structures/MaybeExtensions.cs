@@ -36,9 +36,6 @@ public static class MaybeExtensions
 
 	public static async ValueTask<Maybe<T>> FirstOrEmptyAsync<T>(this IAsyncEnumerable<T> source, CancellationToken cancellationToken = default)
 	{
-		if (source is IList<T> { Count: > 0 } list)
-			return Maybe.Create(list[0]);
-
 		await using var e = source
 			.ConfigureAwait(false)
 			.WithCancellation(cancellationToken)
@@ -52,9 +49,6 @@ public static class MaybeExtensions
 
 	public static async ValueTask<Maybe<T>> FirstOrEmptyAsync<T>(this IAsyncEnumerable<T> source, Func<T, bool> predicate, CancellationToken cancellationToken = default)
 	{
-		if (source is IList<T> { Count: > 0 } list)
-			return list[0];
-
 		await using var e = source
 			.ConfigureAwait(false)
 			.WithCancellation(cancellationToken)
@@ -73,9 +67,6 @@ public static class MaybeExtensions
 
 	public static async ValueTask<Maybe<T>> FirstOrEmptyAsync<T>(this IAsyncEnumerable<T> source, Func<T, ValueTask<bool>> asyncPredicate, CancellationToken cancellationToken = default)
 	{
-		if (source is IList<T> { Count: > 0 } list)
-			return list[0];
-
 		await using var e = source
 			.ConfigureAwait(false)
 			.WithCancellation(cancellationToken)
