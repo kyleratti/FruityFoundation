@@ -41,7 +41,7 @@ public class DbTransaction<TConnectionType> : IDatabaseTransactionConnection<TCo
 
 		var command = new CommandDefinition(sql, param, transaction: _transaction, cancellationToken: cancellationToken);
 
-		return await conn.QueryAsync<T>(command);
+		return await conn.QueryAsync<T>(command).ConfigureAwait(false);
 	}
 
 	/// <inheritdoc />
@@ -57,7 +57,7 @@ public class DbTransaction<TConnectionType> : IDatabaseTransactionConnection<TCo
 		var query = conn.QueryUnbufferedAsync<T>(sql, param, transaction: _transaction)
 			.WithCancellation(cancellationToken);
 
-		await foreach (var item in query)
+		await foreach (var item in query.ConfigureAwait(false))
 			yield return item;
 	}
 
@@ -69,7 +69,7 @@ public class DbTransaction<TConnectionType> : IDatabaseTransactionConnection<TCo
 
 		var command = new CommandDefinition(sql, param, transaction: _transaction, cancellationToken: cancellationToken);
 
-		return await conn.QuerySingleAsync<T>(command);
+		return await conn.QuerySingleAsync<T>(command).ConfigureAwait(false);
 	}
 
 	/// <inheritdoc />
@@ -79,7 +79,7 @@ public class DbTransaction<TConnectionType> : IDatabaseTransactionConnection<TCo
 			throw new InvalidOperationException("Transaction connection cannot be null");
 
 		return await conn.QueryUnbufferedAsync<T>(sql, param, transaction: _transaction)
-			.FirstOrEmptyAsync(cancellationToken);
+			.FirstOrEmptyAsync(cancellationToken).ConfigureAwait(false);
 	}
 
 	/// <inheritdoc />
@@ -90,7 +90,7 @@ public class DbTransaction<TConnectionType> : IDatabaseTransactionConnection<TCo
 
 		var command = new CommandDefinition(sql, param, transaction: _transaction, cancellationToken: cancellationToken);
 
-		return await conn.ExecuteAsync(command);
+		return await conn.ExecuteAsync(command).ConfigureAwait(false);
 	}
 
 	/// <inheritdoc />
@@ -101,7 +101,7 @@ public class DbTransaction<TConnectionType> : IDatabaseTransactionConnection<TCo
 
 		var command = new CommandDefinition(sql, param, transaction: _transaction, cancellationToken: cancellationToken);
 
-		return await conn.ExecuteScalarAsync<T>(command);
+		return await conn.ExecuteScalarAsync<T>(command).ConfigureAwait(false);
 	}
 
 	/// <inheritdoc />
@@ -116,19 +116,19 @@ public class DbTransaction<TConnectionType> : IDatabaseTransactionConnection<TCo
 
 		var command = new CommandDefinition(sql, param, transaction: _transaction, cancellationToken: cancellationToken);
 
-		return await conn.ExecuteReaderAsync(command);
+		return await conn.ExecuteReaderAsync(command).ConfigureAwait(false);
 	}
 
 	/// <inheritdoc />
 	public async Task Commit(CancellationToken cancellationToken)
 	{
-		await _transaction.CommitAsync(cancellationToken);
+		await _transaction.CommitAsync(cancellationToken).ConfigureAwait(false);
 	}
 
 	/// <inheritdoc />
 	public async Task Rollback(CancellationToken cancellationToken)
 	{
-		await _transaction.RollbackAsync(cancellationToken);
+		await _transaction.RollbackAsync(cancellationToken).ConfigureAwait(false);
 	}
 
 	protected virtual void Dispose(bool disposing)
@@ -151,14 +151,14 @@ public class DbTransaction<TConnectionType> : IDatabaseTransactionConnection<TCo
 	protected virtual async ValueTask DisposeAsyncCore()
 	{
 #pragma warning disable IDISP007
-		await _transaction.DisposeAsync();
+		await _transaction.DisposeAsync().ConfigureAwait(false);
 #pragma warning restore IDISP007
 	}
 
 	/// <inheritdoc />
 	public async ValueTask DisposeAsync()
 	{
-		await DisposeAsyncCore();
+		await DisposeAsyncCore().ConfigureAwait(false);
 		GC.SuppressFinalize(this);
 	}
 }

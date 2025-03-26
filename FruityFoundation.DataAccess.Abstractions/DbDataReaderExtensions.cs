@@ -10,9 +10,9 @@ public static class DbDataReaderExtensions
 		[EnumeratorCancellation] CancellationToken cancellationToken
 	)
 	{
-		await using var readerHandle = await reader;
+		await using var readerHandle = await reader.ConfigureAwait(false);
 
-		while (await readerHandle.ReadAsync(cancellationToken))
+		while (await readerHandle.ReadAsync(cancellationToken).ConfigureAwait(false))
 		{
 			yield return readerHandle;
 		}

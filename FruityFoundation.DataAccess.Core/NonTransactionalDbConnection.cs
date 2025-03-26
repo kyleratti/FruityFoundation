@@ -38,7 +38,7 @@ public class NonTransactionalDbConnection<TConnectionType> : INonTransactionalDb
 		string sql,
 		object? param = null,
 		CancellationToken cancellationToken = default
-	) => await _connection.QueryAsync<T>(new CommandDefinition(sql, param, cancellationToken: cancellationToken));
+	) => await _connection.QueryAsync<T>(new CommandDefinition(sql, param, cancellationToken: cancellationToken)).ConfigureAwait(false);
 
 	/// <inheritdoc />
 	public async IAsyncEnumerable<T> QueryUnbuffered<T>(
@@ -50,7 +50,7 @@ public class NonTransactionalDbConnection<TConnectionType> : INonTransactionalDb
 		var query = _connection.QueryUnbufferedAsync<T>(sql, param, transaction: null)
 			.WithCancellation(cancellationToken);
 
-		await foreach (var item in query)
+		await foreach (var item in query.ConfigureAwait(false))
 			yield return item;
 	}
 
@@ -59,7 +59,7 @@ public class NonTransactionalDbConnection<TConnectionType> : INonTransactionalDb
 		string sql,
 		object? param = null,
 		CancellationToken cancellationToken = default
-	) => await _connection.QuerySingleAsync<T>(new CommandDefinition(sql, param, cancellationToken: cancellationToken));
+	) => await _connection.QuerySingleAsync<T>(new CommandDefinition(sql, param, cancellationToken: cancellationToken)).ConfigureAwait(false);
 
 	/// <inheritdoc />
 	public async Task<Maybe<T>> TryQueryFirst<T>(
@@ -68,36 +68,36 @@ public class NonTransactionalDbConnection<TConnectionType> : INonTransactionalDb
 		CancellationToken cancellationToken = default
 	) =>
 		await _connection.QueryUnbufferedAsync<T>(sql, param, transaction: null)
-			.FirstOrEmptyAsync(cancellationToken);
+			.FirstOrEmptyAsync(cancellationToken).ConfigureAwait(false);
 
 	/// <inheritdoc />
 	public async Task<int> Execute(
 		string sql,
 		object? param = null,
 		CancellationToken cancellationToken = default
-	) => await _connection.ExecuteAsync(new CommandDefinition(sql, param, cancellationToken: cancellationToken));
+	) => await _connection.ExecuteAsync(new CommandDefinition(sql, param, cancellationToken: cancellationToken)).ConfigureAwait(false);
 
 	/// <inheritdoc />
 	public async Task<T?> ExecuteScalar<T>(
 		string sql,
 		object? param = null,
 		CancellationToken cancellationToken = default
-	) => await _connection.ExecuteScalarAsync<T>(new CommandDefinition(sql, param, cancellationToken: cancellationToken));
+	) => await _connection.ExecuteScalarAsync<T>(new CommandDefinition(sql, param, cancellationToken: cancellationToken)).ConfigureAwait(false);
 
 	/// <inheritdoc />
 	public async Task<DbDataReader> ExecuteReader(
 		string sql,
 		object? param = null,
 		CancellationToken cancellationToken = default
-	) => await _connection.ExecuteReaderAsync(new CommandDefinition(sql, param, cancellationToken: cancellationToken));
+	) => await _connection.ExecuteReaderAsync(new CommandDefinition(sql, param, cancellationToken: cancellationToken)).ConfigureAwait(false);
 
 	/// <inheritdoc />
 	public async Task<IDatabaseTransactionConnection<TConnectionType>> CreateTransaction(CancellationToken cancellationToken)
 	{
 		if (!_connection.State.HasFlag(ConnectionState.Open))
-			await _connection.OpenAsync(cancellationToken);
+			await _connection.OpenAsync(cancellationToken).ConfigureAwait(false);
 
-		var tx = await _connection.BeginTransactionAsync(cancellationToken);
+		var tx = await _connection.BeginTransactionAsync(cancellationToken).ConfigureAwait(false);
 
 		return new DbTransaction<TConnectionType>(tx);
 	}
@@ -106,9 +106,9 @@ public class NonTransactionalDbConnection<TConnectionType> : INonTransactionalDb
 	public async Task<IDatabaseTransactionConnection<TConnectionType>> CreateTransaction(IsolationLevel isolationLevel, CancellationToken cancellationToken)
 	{
 		if (!_connection.State.HasFlag(ConnectionState.Open))
-			await _connection.OpenAsync(cancellationToken);
+			await _connection.OpenAsync(cancellationToken).ConfigureAwait(false);
 
-		var tx = await _connection.BeginTransactionAsync(isolationLevel, cancellationToken);
+		var tx = await _connection.BeginTransactionAsync(isolationLevel, cancellationToken).ConfigureAwait(false);
 
 		return new DbTransaction<TConnectionType>(tx);
 	}
@@ -133,14 +133,14 @@ public class NonTransactionalDbConnection<TConnectionType> : INonTransactionalDb
 	protected virtual async ValueTask DisposeAsyncCore()
 	{
 #pragma warning disable IDISP007
-		await _connection.DisposeAsync();
+		await _connection.DisposeAsync().ConfigureAwait(false);
 #pragma warning restore IDISP007
 	}
 
 	/// <inheritdoc />
 	public async ValueTask DisposeAsync()
 	{
-		await DisposeAsyncCore();
+		await DisposeAsyncCore().ConfigureAwait(false);
 		GC.SuppressFinalize(this);
 	}
 }
