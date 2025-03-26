@@ -9,9 +9,20 @@ public static class MaybeExtensions
 {
 	public static Maybe<T> FirstOrEmpty<T>(this IEnumerable<T> collection)
 	{
+		if (collection is IList<T> list)
+		{
+			if (list.Count == 0)
+				return Maybe.Empty<T>();
+
+			return list[0];
+		}
+
 		using var enumerator = collection.GetEnumerator();
-		
-		return !enumerator.MoveNext() ? Maybe.Empty<T>() : enumerator.Current;
+
+		if (!enumerator.MoveNext())
+			return Maybe.Empty<T>();
+
+		return enumerator.Current;
 	}
 
 	public static Maybe<T> FirstOrEmpty<T>(this IEnumerable<T> collection, Func<T, bool> pred)

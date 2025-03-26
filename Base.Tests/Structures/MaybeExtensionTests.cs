@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using FakeItEasy;
 using FruityFoundation.Base.Structures;
 using NUnit.Framework;
 
@@ -21,6 +22,33 @@ public class MaybeExtensionTests
 		// Assert
 		Assert.That(result, Is.InstanceOf<Maybe<int>>());
 		Assert.That(result.HasValue, Is.False);
+	}
+
+	[Test]
+	public void Enumerable_FirstOrEmpty_WhenEnumerableIsEmptyList_ReturnsEmptyMaybe_UsingSpeedBoost()
+	{
+		// Arrange
+		var data = new ThrowOnGetEnumerator.List<int>([]);
+
+		// Act
+		var result = data.FirstOrEmpty();
+
+		// Assert
+		Assert.That(result.HasValue, Is.False);
+	}
+
+	[Test]
+	public void Enumerable_FirstOrEmpty_WhenEnumerableIsList_ReturnsFirstItem_UsingSpeedBoost()
+	{
+		// Arrange
+		var data = new ThrowOnGetEnumerator.List<int>([1, 2, 3, 4]);
+
+		// Act
+		var result = data.FirstOrEmpty();
+
+		// Assert
+		Assert.That(result.HasValue, Is.True);
+		Assert.That(result.Value, Is.EqualTo(1));
 	}
 
 	[Test]
@@ -240,8 +268,19 @@ public class MaybeExtensionTests
 	private static async IAsyncEnumerable<T> ToAsyncEnumerable<T>(IEnumerable<T> enumerable)
 	{
 		foreach (var item in enumerable)
+		{
+			await Task.Yield();
 			yield return item;
+		}
+	}
 
-		await Task.Yield();
+	private static class ThrowOnGetEnumerator
+	{
+		public class List<T> : System.Collections.Generic.List<T>
+		{
+			public List(IEnumerable<T> collection) : base(collection) { }
+
+			public new IEnumerator<T> GetEnumerator() => throw new InvalidOperationException();
+		}
 	}
 }
