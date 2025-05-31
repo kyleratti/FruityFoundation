@@ -1,4 +1,11 @@
 Changelog
+<a name="3.3.0"></a>
+## [3.3.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v3.3.0) (2025-05-31)
+
+### ✨ Features
+
+* add Maybe<T>.TryParse ([34df23f](https://www.github.com/kyleratti/FruityFoundation/commit/34df23f024f5455c8af0d14947dc1938f5daf5ae))
+
 <a name="3.2.0"></a>
 ## [3.2.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v3.2.0) (2025-03-26)
 
