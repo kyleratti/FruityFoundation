@@ -164,6 +164,27 @@ public readonly record struct Maybe<T>
 		return this;
 	}
 
+	/// <summary>
+	/// Tries to parse the current value into the specified type.
+	/// </summary>
+	/// <param name="tryParse">The delegate to use when trying to parse.</param>
+	/// <typeparam name="TOutput">The target type</typeparam>
+	/// <returns>
+	/// If the maybe is already empty, an empty maybe of <typeparamref name="TOutput"/> is returned.
+	/// If the try parse fails, an empty maybe of <typeparamref name="TOutput"/> is returned.
+	/// If the try parse succeeds, a maybe with the parsed value of <typeparamref name="TOutput"/> is returned.
+	/// </returns>
+	public Maybe<TOutput> TryParse<TOutput>(TryParseDelegate<T, TOutput> tryParse)
+	{
+		if (!HasValue)
+			return Maybe.Empty<TOutput>();
+
+		if (!tryParse(Value, out var output))
+			return Maybe.Empty<TOutput>();
+
+		return new Maybe<TOutput>(output);
+	}
+
 	public static implicit operator Maybe<T>(T val) => Maybe.Create(val);
 
 	public override string ToString()
