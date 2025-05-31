@@ -6,18 +6,46 @@ namespace FruityFoundation.Base.Structures;
 
 public static class EnumerableExtensions
 {
-	public static IEnumerable<T> ConditionalConcat<T>(this IEnumerable<T> enumerable, bool condition, IEnumerable<T> second) =>
-		!condition ? enumerable : enumerable.Concat(second);
+	public static IEnumerable<T> ConditionalConcat<T>(this IEnumerable<T> enumerable, bool condition, IEnumerable<T> second)
+	{
+		if (!condition)
+			return enumerable;
 
-	public static IEnumerable<T> ConditionalAppend<T>(this IEnumerable<T> enumerable, bool condition, T second) =>
-		condition ? enumerable.Append(second) : enumerable;
+		return enumerable.Concat(second);
+	}
 
-	public static IEnumerable<T> ConditionalAppend<T>(this IEnumerable<T> enumerable, Maybe<T> item) =>
-		item.HasValue ? enumerable.Append(item.Value) : enumerable;
-	
-	public static IEnumerable<T> ConditionalWhere<T>(this IEnumerable<T> enumerable, bool condition, Func<T, bool> pred) =>
-		!condition ? enumerable : enumerable.Where(pred);
+	public static IEnumerable<T> ConditionalAppend<T>(this IEnumerable<T> enumerable, bool condition, T second)
+	{
+		if (!condition)
+			return enumerable;
 
-	public static IEnumerable<TOutput> Choose<TInput, TOutput>(this IEnumerable<TInput> enumerable, Func<TInput, Maybe<TOutput>> chooser) =>
-		enumerable.Select(chooser).Where(x => x.HasValue).Select(x => x.Value);
+		return enumerable.Append(second);
+	}
+
+	public static IEnumerable<T> ConditionalAppend<T>(this IEnumerable<T> enumerable, Maybe<T> item)
+	{
+		if (!item.Try(out var value))
+			return enumerable;
+
+		return enumerable.Append(value);
+	}
+
+	public static IEnumerable<T> ConditionalWhere<T>(this IEnumerable<T> enumerable, bool condition, Func<T, bool> pred)
+	{
+		if (!condition)
+			return enumerable;
+
+		return enumerable.Where(pred);
+	}
+
+	public static IEnumerable<TOutput> Choose<TInput, TOutput>(
+		this IEnumerable<TInput> enumerable,
+		Func<TInput, Maybe<TOutput>> chooser
+	)
+	{
+		return enumerable
+			.Select(chooser)
+			.Where(x => x.HasValue)
+			.Select(x => x.Value);
+	}
 }
