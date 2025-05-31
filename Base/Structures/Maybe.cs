@@ -117,14 +117,29 @@ public readonly record struct Maybe<T>
 		return new Maybe<TOutput>(newValue);
 	}
 
-	public Maybe<TOutput> Bind<TOutput>(Func<T, Maybe<TOutput>> binder) =>
-		HasValue ? binder(Value) : Maybe.Empty<TOutput>();
+	public Maybe<TOutput> Bind<TOutput>(Func<T, Maybe<TOutput>> binder)
+	{
+		if (!HasValue)
+			return Maybe.Empty<TOutput>();
 
-	public Maybe<T> EmptyBind(Func<Maybe<T>> maybeFactory) =>
-		HasValue ? this : maybeFactory();
+		return binder(Value);
+	}
 
-	public Maybe<T> EmptyBind(Maybe<T> maybe) =>
-		HasValue ? this : maybe;
+	public Maybe<T> EmptyBind(Func<Maybe<T>> maybeFactory)
+	{
+		if (!HasValue)
+			return maybeFactory();
+
+		return this;
+	}
+
+	public Maybe<T> EmptyBind(Maybe<T> maybe)
+	{
+		if (!HasValue)
+			return maybe;
+
+		return this;
+	}
 
 	public Maybe<TOutput> Cast<TOutput>()
 	{
