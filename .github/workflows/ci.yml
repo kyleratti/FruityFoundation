@@ -9,6 +9,7 @@ concurrency:
 
 jobs:
   build:
+    name: Build and Test
 
     runs-on: ubuntu-latest
     strategy:
@@ -26,4 +27,4 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release --no-restore
       - name: Test
-        run: dotnet test --no-restore --verbosity normal
+        run: dotnet test --verbosity normal
