@@ -1,4 +1,15 @@
 Changelog
+<a name="4.0.0"></a>
+## [4.0.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v4.0.0) (2026-10-24)
+
+### ✨ Features
+
+* execute reader with command behavior ([60978be](https://www.github.com/kyleratti/FruityFoundation/commit/60978be4ac57533f8bdd74f585ca3bb96a67f433))
+
+### Breaking Changes
+
+* target .NET 10 ([77c8af5](https://www.github.com/kyleratti/FruityFoundation/commit/77c8af57f95d8a4ed6fd2f4426905f86a2d5fcf6))
+
 <a name="3.3.0"></a>
 ## [3.3.0](https://www.github.com/kyleratti/FruityFoundation/releases/tag/v3.3.0) (2025-05-31)
 
