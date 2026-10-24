@@ -3,7 +3,6 @@
   <PropertyGroup>
       <GenerateDocumentationFile>true</GenerateDocumentationFile>
       <RootNamespace>FruityFoundation.Db</RootNamespace>
-      <LangVersion>8.0</LangVersion>
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
       <PackageId>FruityFoundation.Db</PackageId>
       <Authors>Kyle Ratti</Authors>
@@ -13,7 +12,6 @@
       <Version>3.3.0</Version>
       <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
       <PackageLicenseFile>LICENSE</PackageLicenseFile>
-      <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="FSharp.Core" Version="9.0.201" />
+    <PackageReference Update="FSharp.Core" Version="10.1.402" />
   </ItemGroup>
 
 </Project>

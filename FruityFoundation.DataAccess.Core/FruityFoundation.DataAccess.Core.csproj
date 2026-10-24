@@ -9,7 +9,6 @@
         <Version>3.3.0</Version>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
-        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     </PropertyGroup>
 
     <ItemGroup>
@@ -22,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Dapper" Version="2.1.66" />
+      <PackageReference Include="Dapper" Version="2.1.89" />
     </ItemGroup>
 
 </Project>

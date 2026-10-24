@@ -8,7 +8,6 @@
         <RepositoryUrl>https://github.com/kyleratti/FruityFoundation</RepositoryUrl>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
-        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     </PropertyGroup>
 
     <ItemGroup>
@@ -28,8 +27,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="FSharp.Control.TaskSeq" Version="0.4.0" />
-      <PackageReference Update="FSharp.Core" Version="9.0.201" />
+      <PackageReference Include="FSharp.Control.TaskSeq" Version="1.1.1" />
+      <PackageReference Update="FSharp.Core" Version="10.1.402" />
     </ItemGroup>
 
 </Project>

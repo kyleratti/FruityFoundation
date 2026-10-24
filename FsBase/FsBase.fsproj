@@ -9,8 +9,6 @@
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <Version>3.3.0</Version>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
-        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
-        <LangVersion>8.0</LangVersion>
     </PropertyGroup>
 
   <ItemGroup>
@@ -26,11 +24,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Extensions.fs" />
+        <Compile Include="Array.fs" />
+        <Compile Include="Option.fs" />
+        <Compile Include="ValueOption.fs" />
+        <Compile Include="OptionMaybeInteropExtensions.fs" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Update="FSharp.Core" Version="9.0.201" />
+      <PackageReference Update="FSharp.Core" Version="10.1.402" />
     </ItemGroup>
 
     <ItemGroup>
