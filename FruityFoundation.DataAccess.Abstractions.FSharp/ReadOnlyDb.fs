@@ -2,6 +2,7 @@
 module FruityFoundation.DataAccess.Abstractions.FSharp.ReadOnlyDb
 
 open System.Collections.Generic
+open System.Data
 open System.Threading
 open FSharp.Control
 open FruityFoundation.DataAccess.Abstractions
@@ -11,7 +12,7 @@ let private toKeyValuePair (parms : (string * obj) seq) =
     parms
     |> Seq.map (fun (name, value) -> KeyValuePair(name, value))
 
-let query<'a> (connection : IDatabaseConnection<ReadOnly>) (cancellationToken : CancellationToken) (sql : string) (parms : (string * obj) seq) = task {
+let query<'a> (connection : IDatabaseConnection<ReadOnly>) (cancellationToken : CancellationToken) (sql : string) (parms : (string * obj) seq) = backgroundTask {
     return! connection.Query<'a>(sql, parms |> toKeyValuePair, cancellationToken)
 }
 
@@ -19,23 +20,33 @@ let queryUnbuffered<'a> (connection : IDatabaseConnection<ReadOnly>) (cancellati
     yield! connection.QueryUnbuffered<'a>(sql, parms |> toKeyValuePair, cancellationToken)
 }
 
-let querySingle<'a> (connection : IDatabaseConnection<ReadOnly>) (cancellationToken : CancellationToken) (sql : string) (parms : (string * obj) seq) = task {
+let querySingle<'a> (connection : IDatabaseConnection<ReadOnly>) (cancellationToken : CancellationToken) (sql : string) (parms : (string * obj) seq) = backgroundTask {
     return! connection.QuerySingle<'a>(sql, parms |> toKeyValuePair, cancellationToken)
 }
 
-let tryQueryFirst<'a> (connection : ReadOnly IDatabaseConnection) (cancellationToken : CancellationToken) (sql : string) (parms : (string * obj) seq) = task {
+let tryQueryFirst<'a> (connection : ReadOnly IDatabaseConnection) (cancellationToken : CancellationToken) (sql : string) (parms : (string * obj) seq) = backgroundTask {
     let! result = connection.TryQueryFirst<'a>(sql, parms |> toKeyValuePair, cancellationToken)
     return result |> Option.fromMaybe
 }
 
-let execute (connection : IDatabaseConnection<ReadOnly>) (cancellationToken : CancellationToken) (sql : string) (parms : (string * obj) seq) = task {
+let execute (connection : IDatabaseConnection<ReadOnly>) (cancellationToken : CancellationToken) (sql : string) (parms : (string * obj) seq) = backgroundTask {
     return! connection.Execute(sql, parms |> toKeyValuePair, cancellationToken)
 }
 
-let executeScalar<'a> (connection : IDatabaseConnection<ReadOnly>) (cancellationToken : CancellationToken) (sql : string) (parms : (string * obj) seq) = task {
+let executeScalar<'a> (connection : IDatabaseConnection<ReadOnly>) (cancellationToken : CancellationToken) (sql : string) (parms : (string * obj) seq) = backgroundTask {
     return! connection.ExecuteScalar<'a>(sql, parms |> toKeyValuePair, cancellationToken)
 }
 
-let executeReader (connection : IDatabaseConnection<ReadOnly>) (cancellationToken : CancellationToken) (sql : string) (parms : (string * obj) seq) = task {
-    return! connection.ExecuteReader(sql, parms |> toKeyValuePair, cancellationToken)
+let executeReaderWithBehavior behavior
+                              (connection: ReadOnly IDatabaseConnection)
+                              cancellationToken
+                              sql
+                              (parms: (string * obj) seq) = backgroundTask {
+    return! connection.ExecuteReader(sql, parms |> toKeyValuePair, behavior, cancellationToken = cancellationToken)
 }
+
+let executeReader connection cancellationToken =
+    executeReaderWithBehavior CommandBehavior.Default connection cancellationToken 
+
+let executeReaderSequential connection cancellationToken =
+    executeReaderWithBehavior CommandBehavior.SequentialAccess connection cancellationToken

@@ -2,6 +2,7 @@
 module FruityFoundation.DataAccess.Abstractions.FSharp.ReadWriteDb
 
 open System.Collections.Generic
+open System.Data
 open System.Threading
 open FSharp.Control
 open FruityFoundation.DataAccess.Abstractions
@@ -36,6 +37,16 @@ let executeScalar<'a> (connection : IDatabaseConnection<ReadWrite>) (cancellatio
     return! connection.ExecuteScalar<'a>(sql, parms |> toKeyValuePair, cancellationToken)
 }
 
-let executeReader (connection : IDatabaseConnection<ReadWrite>) (cancellationToken : CancellationToken) (sql : string) (parms : (string * obj) seq) = task {
-    return! connection.ExecuteReader(sql, parms |> toKeyValuePair, cancellationToken)
+let executeReaderWithBehavior behavior
+                              (connection: ReadWrite IDatabaseConnection)
+                              cancellationToken
+                              sql
+                              (parms: (string * obj) seq) = backgroundTask {
+    return! connection.ExecuteReader(sql, parms |> toKeyValuePair, behavior, cancellationToken = cancellationToken)
 }
+
+let executeReader connection cancellationToken =
+    executeReaderWithBehavior CommandBehavior.Default connection cancellationToken 
+
+let executeReaderSequential connection cancellationToken =
+    executeReaderWithBehavior CommandBehavior.SequentialAccess connection cancellationToken

@@ -88,8 +88,17 @@ public class NonTransactionalDbConnection<TConnectionType> : INonTransactionalDb
 	public async Task<DbDataReader> ExecuteReader(
 		string sql,
 		object? param = null,
+		CommandBehavior commandBehavior = CommandBehavior.Default,
 		CancellationToken cancellationToken = default
-	) => await _connection.ExecuteReaderAsync(new CommandDefinition(sql, param, cancellationToken: cancellationToken)).ConfigureAwait(false);
+	) => await _connection
+		.ExecuteReaderAsync(new CommandDefinition(sql, param, cancellationToken: cancellationToken), commandBehavior)
+		.ConfigureAwait(false);
+
+	public async Task<DbDataReader> ExecuteReader(
+		string sql,
+		object? param = null,
+		CancellationToken cancellationToken = default
+	) => await ExecuteReader(sql, param, CommandBehavior.Default, cancellationToken);
 
 	/// <inheritdoc />
 	public async Task<IDatabaseTransactionConnection<TConnectionType>> CreateTransaction(CancellationToken cancellationToken)

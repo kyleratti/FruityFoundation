@@ -1,4 +1,5 @@
-﻿using System.Data.Common;
+﻿using System.Data;
+using System.Data.Common;
 using FruityFoundation.Base.Structures;
 
 namespace FruityFoundation.DataAccess.Abstractions;
@@ -17,5 +18,9 @@ public interface IDatabaseConnection<out TConnectionType> where TConnectionType 
 	public Task<Maybe<T>> TryQueryFirst<T>(string sql, object? param = null, CancellationToken cancellationToken = default);
 	public Task<int> Execute(string sql, object? param = null, CancellationToken cancellationToken = default);
 	public Task<T?> ExecuteScalar<T>(string sql, object? param = null, CancellationToken cancellationToken = default);
+
 	public Task<DbDataReader> ExecuteReader(string sql, object? param = null, CancellationToken cancellationToken = default);
+
+	public Task<DbDataReader> ExecuteReader(string sql, object? param = null,
+		CommandBehavior commandBehavior = CommandBehavior.Default, CancellationToken cancellationToken = default);
 }

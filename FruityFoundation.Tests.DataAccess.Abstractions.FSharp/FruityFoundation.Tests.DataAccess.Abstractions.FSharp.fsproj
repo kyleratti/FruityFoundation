@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="SetUpFixture.fs" />
         <Compile Include="ReadWriteDbTests.fs" />
         <Compile Include="ReadOnlyDbTests.fs" />
         <Compile Include="DbDataReaderTests.fs" />

@@ -1,4 +1,5 @@
-﻿using System.Data.Common;
+﻿using System.Data;
+using System.Data.Common;
 using System.Runtime.CompilerServices;
 using Dapper;
 using FruityFoundation.Base.Structures;
@@ -108,6 +109,7 @@ public class DbTransaction<TConnectionType> : IDatabaseTransactionConnection<TCo
 	public async Task<DbDataReader> ExecuteReader(
 		string sql,
 		object? param = null,
+		CommandBehavior commandBehavior = CommandBehavior.Default,
 		CancellationToken cancellationToken = default
 	)
 	{
@@ -116,8 +118,13 @@ public class DbTransaction<TConnectionType> : IDatabaseTransactionConnection<TCo
 
 		var command = new CommandDefinition(sql, param, transaction: _transaction, cancellationToken: cancellationToken);
 
-		return await conn.ExecuteReaderAsync(command).ConfigureAwait(false);
+		return await conn.ExecuteReaderAsync(command, commandBehavior).ConfigureAwait(false);
 	}
+
+	/// <inheritdoc/>
+	public async Task<DbDataReader> ExecuteReader(string sql, object? param = null,
+		CancellationToken cancellationToken = default) =>
+		await ExecuteReader(sql, param, CommandBehavior.Default, cancellationToken);
 
 	/// <inheritdoc />
 	public async Task Commit(CancellationToken cancellationToken)
